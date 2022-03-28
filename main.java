@@ -1,8 +1,8 @@
 import java.util.*;
 
-class HelloWorld
+class Helloworld
 {
-    public static void main(String argv[])
+    public static void main(String args[])
     {
         Scanner in = new Scanner(System.in);
         String input = in.nextLine();
