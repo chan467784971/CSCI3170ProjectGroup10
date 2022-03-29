@@ -1,7 +1,7 @@
 import java.util.*;
 import java.sql.*;
 
-
+//command
 public class Main
 {
     public static void main(String[] args)
