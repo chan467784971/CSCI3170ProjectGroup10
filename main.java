@@ -31,7 +31,7 @@ public class Main
             System.out.println("You wanna leave\n");
             default :
             System.out.println("WDYM\n");
-            
+             System.out.println("Twst\n");
         }
     }
 }
