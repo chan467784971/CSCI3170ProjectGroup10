@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class DataBase {
+public class Database {
     private String dbAddress = "jdbc:mysql://projgw.cse.cuhk.edu.hk:2633/db10";
     private String dbUsername = "Group10";
     private String dbPassword = "CSCI3170";

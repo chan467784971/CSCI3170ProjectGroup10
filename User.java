@@ -33,7 +33,7 @@ public class User {
         return this.occupation;
     }
     
-    public String getCategoryId() {
+    public int getCategoryId() {
         return this.categoryId;
     }
 
