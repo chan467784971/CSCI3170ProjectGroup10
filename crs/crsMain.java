@@ -1,8 +1,16 @@
 package crs;
 
 import java.util.*;
+import model.*;
 
 public class crsMain implements CrsInterface {
+    private Database db;
+
+    public void MainCrs(Database db){
+        this.db = db;
+    }
+
+
     public void printMenu(){
         System.out.println("-----Main menu----\n");
         System.out.println("What kinds of operations would you like to perform?\n");
@@ -32,7 +40,7 @@ public class crsMain implements CrsInterface {
             System.out.println("You wanna leave\n");
             break;
             default :
-            System.out.println("WDYM\n");
+            System.out.println("Invalid operation, choose again\n");
             
         }
     }
