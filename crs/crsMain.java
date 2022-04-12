@@ -1,8 +1,6 @@
 package crs;
 
 import java.util.*;
-import java.util.function.DoubleBinaryOperator;
-
 import model.*;
 
 public class crsMain implements CrsInterface {
