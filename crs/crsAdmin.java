@@ -40,7 +40,7 @@ public class crsAdmin implements CrsInterface{
         }
     }
 
-    private void printMenu(){
+    public void printMenu(){
         System.out.println("-----Main menu----\n");
         System.out.println("What kinds of operations would you like to perform?\n");
         System.out.println("1. Create all tables\n");
