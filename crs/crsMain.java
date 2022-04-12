@@ -41,7 +41,6 @@ public class crsMain implements CrsInterface {
             break;
             default :
             System.out.println("Invalid operation, choose again\n");
-            
         }
     }
     

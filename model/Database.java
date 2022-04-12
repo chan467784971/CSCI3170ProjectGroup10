@@ -8,6 +8,8 @@ public class Database {
     private String dbPassword = "CSCI3170";
     private Connection connect = null;
 
+    final String[] tables = {"car", "carCategory", "user", "userCategory", "rent"};
+
     // Operation
     public boolean Connect() {
         try {
@@ -23,12 +25,36 @@ public class Database {
         return true;
     }
 
-    public void creatTable(String[] argument) {
+    public void creatAllTable() throws SQLException {
         // preparedstatement ???????
+        PreparedStatement[] statements = {
+            //SQL create table statement
+            connect.prepareStatement("CREATE TABLE car (callNumber CHAR(8) NOT NULL, numOfCopies INTEGER(1) NOT NULL, carName CHAR(10) NOT NULL, company CHAR(25) NOT NULL, manuDate DATE NOT NULL, numOfRent INTEGER(2) NOT NULL, carCate INTEGER(1) NOT NULL, PRIMARY KEY (callNumber))"),
+            connect.prepareStatement("CREATE TABLE carCategory (carCate INTEGER(1) NOT NULL, carCateName CHAR(20) NOT NULL, PRIMARY KEY (carCate))"),
+            connect.prepareStatement("CREATE TABLE user (userID CHAR(12) NOT NULL, name CHAR(25) NOT NULL, age INTEGER(2) NOT NULL, occupa CHAR(20) NOT NULL, userCate INTEGER(1) NOT NULL, PRIMARY KEY (userCate))"),
+            connect.prepareStatement("CREATE TABLE userCategory (userCate INTEGER(1) NOT NULL, maxCar INTEGER(1) NOT NULL, loanP INTEGER(2) NOT NULL, PRIMARY KEY(userCate))"),
+            connect.prepareStatement("CREATE TABLE rent (callNumber CHAR(8) NOT NULL, numOfCopies INTEGER(1) NOT NULL, userID CHAR(12) NOT NULL, checkout DATE NOT NULL, return_date DATE, PRIMARY KEY(checkout))")
+        };
+
+        for (int i = 0; i < statements.length; i++){
+            statements[i].execute();
+        }
     }
 
-    public void dropTable(String[] argument) {
+    public void deleteAllTable() throws SQLException {
+        for(int i = 0; i < tables.length; i++){
+            PreparedStatement statement = connect.prepareStatement("DROP TABLE " + tables[i]);
+            statement.execute();
+        }
 
+    }
+
+    public void loadFromDataFile(){
+
+    }
+
+    private void readFiletoDB(){
+        
     }
 
     public void showSchema(String[] argument) {
