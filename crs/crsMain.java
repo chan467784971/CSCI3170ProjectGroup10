@@ -10,7 +10,6 @@ public class crsMain implements CrsInterface {
         this.db = db;
     }
 
-
     private void printMenu(){
         System.out.println("-----Main menu----\n");
         System.out.println("What kinds of operations would you like to perform?\n");
