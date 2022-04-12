@@ -24,6 +24,7 @@ public class main
         System.out.println("\n");
 
         crsMain c = new crsMain();
-        c.main(args);
+        c.MainCrs(db);
+        c.main();
     }
 }
