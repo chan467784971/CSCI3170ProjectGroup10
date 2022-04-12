@@ -50,4 +50,42 @@ public class crsAdmin implements CrsInterface{
     }
 
     //sql operation here
+
+    private void createAllTable(){
+        try{
+            System.out.println("Processing");
+            db.creatAllTable();
+            System.out.println("Done.Database is initialized.\n");
+        }catch(SQLException e){
+            if(e.toString().contains("exists")){
+                System.out.println("[Error] Tables already created.\n");
+            }else{
+                System.out.println("[Error] Failed to create tables.\n");
+            }
+        }
+        
+    }
+
+    private void deleteAllTable(){
+        try{
+            System.out.println("Processing");
+            db.deleteAllTable();
+            System.out.println("Done! Database is removed!\n");
+        }catch (SQLException e){
+            if (e.toString().contains("Unknown")) {
+                System.out.println("[Error] Tables do not exist.\n");
+            } else {
+                System.out.println("[Error] Failed to delete tables.\n");
+            }
+        }
+
+    }
+
+    private void loadFromDataFile(){
+
+    }
+
+    private void showNumOfRecords(){
+
+    }
 }
