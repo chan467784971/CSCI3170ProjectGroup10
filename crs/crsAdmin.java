@@ -11,7 +11,7 @@ public class crsAdmin implements CrsInterface{
         this.db = db;
     }
 
-    public void startCrs(){
+    public void main(){
         while(true){
             printMenu();
             Scanner in = new Scanner(System.in);
@@ -20,9 +20,11 @@ public class crsAdmin implements CrsInterface{
             switch(input){
                 case 1:
                 System.out.println("You choose Create\n");
+                createAllTable();
                 break;
                 case 2:
                 System.out.println("You choose Delete\n");
+                deleteAllTable();
                 break;
                 case 3:
                 System.out.println("You choose Loadfile\n");
@@ -38,7 +40,7 @@ public class crsAdmin implements CrsInterface{
         }
     }
 
-    public void printMenu(){
+    private void printMenu(){
         System.out.println("-----Main menu----\n");
         System.out.println("What kinds of operations would you like to perform?\n");
         System.out.println("1. Create all tables\n");
