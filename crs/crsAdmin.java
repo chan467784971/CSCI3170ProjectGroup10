@@ -28,6 +28,7 @@ public class crsAdmin implements CrsInterface{
                 break;
                 case 3:
                 System.out.println("You choose Loadfile\n");
+                loadFromDataFile();
                 break;
                 case 4:
                 System.out.println("You choose Show\n");
