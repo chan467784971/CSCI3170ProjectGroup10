@@ -4,7 +4,7 @@ import java.sql.Connection;
 import model.db.carCategoryDBModel;
 
 
-public class carCategoryModel {
+public class carCategoryModel implements fileModelInterface{
     private int ccId;
     private String ccName; 
 
