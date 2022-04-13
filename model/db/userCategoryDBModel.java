@@ -4,12 +4,12 @@ import java.sql.*;
 
 public class userCategoryDBModel {
     private int ucId;
-    private int max;
+    private int maxNum;
     private int period;
 
-    public userCategoryDBModel(int ucId, int max, int period){
+    public userCategoryDBModel(int ucId, int maxNum, int period){
         this.ucId = ucId;
-        this.max = max;
+        this.maxNum = maxNum;
         this.period = period;
 
     }
@@ -17,9 +17,9 @@ public class userCategoryDBModel {
 
     public void insertToDB(Connection connect){
         try {
-            PreparedStatement statement = connect.prepareStatement("INSERT INTO user (ucId, max, period) VALUE(?, ?, ?)");
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO user (ucId, maxNum, period) VALUE(?, ?, ?)");
             statement.setInt(1, ucId);
-            statement.setInt(2, max);
+            statement.setInt(2, maxNum);
             statement.setInt(3, period);
             statement.execute();
             
