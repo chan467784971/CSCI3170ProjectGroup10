@@ -100,6 +100,6 @@ public class crsAdmin implements CrsInterface{
     }
 
     private void showNumOfRecords(){
-
+        System.out.println("Number of records in each table: \n");
     }
 }
