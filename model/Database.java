@@ -63,6 +63,19 @@ public class Database {
     }
 
     private void readFiletoDB(String folderPath, Class<?> type){
+        BufferedReader reader;
+        try{
+            reader = new BufferedReader(new FileReader(folderPath));
+            String line = reader.readLine();
+            while (line != null){
+                fileModelInterface model = (fileModelInterface) type.newInstance();
+                model.parseFromLine(line);
+                model.saveToDB(connect);
+                line = reader.readLine();
+            }
+        }catch(Exception e){
+            System.out.println("[Error] " + e);
+        }
         
     }
 
