@@ -17,11 +17,11 @@ public class DataConvert {
         while (year.length() < 4)
             year = "0" + year;
 
-        return day + "/" + month + "/" + year;
+        return day + "-" + month + "-" + year;
     }
 
     public static Calendar toCalendar(String str){
-        String[] splitted = str.split("/");
+        String[] splitted = str.split("-");
         Calendar calendar = Calendar.getInstance();
         int day = Integer.parseInt(splitted[0]);
         int month = Integer.parseInt(splitted[1])-1;

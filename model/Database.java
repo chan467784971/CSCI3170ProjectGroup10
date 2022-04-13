@@ -36,7 +36,7 @@ public class Database {
             connect.prepareStatement("CREATE TABLE car (callNum CHAR(8) NOT NULL, copyNum INTEGER(1) NOT NULL, carName CHAR(10) NOT NULL, company CHAR(25) NOT NULL, manufacture DATE NOT NULL, timeRent INTEGER(2) NOT NULL, ccId INTEGER(1) NOT NULL, PRIMARY KEY (callNum))"),
             connect.prepareStatement("CREATE TABLE carCategory (ccId INTEGER(1) NOT NULL, ccName CHAR(20) NOT NULL, PRIMARY KEY (ccId))"),
             connect.prepareStatement("CREATE TABLE user (uId CHAR(12) NOT NULL, name CHAR(25) NOT NULL, age INTEGER(2) NOT NULL, occupation CHAR(20) NOT NULL, ucId INTEGER(1) NOT NULL, PRIMARY KEY (uId))"),
-            connect.prepareStatement("CREATE TABLE userCategory (ucId INTEGER(1) NOT NULL, max INTEGER(1) NOT NULL, period INTEGER(2) NOT NULL, PRIMARY KEY(ucId))"),
+            connect.prepareStatement("CREATE TABLE userCategory (ucId INTEGER(1) NOT NULL, maxNum INTEGER(1) NOT NULL, period INTEGER(2) NOT NULL, PRIMARY KEY(ucId))"),
             connect.prepareStatement("CREATE TABLE rent (callNum CHAR(8) NOT NULL, copyNum INTEGER(1) NOT NULL, uId CHAR(12) NOT NULL, checkout DATE NOT NULL, return_date DATE, PRIMARY KEY(checkout))")
         };
 
@@ -56,7 +56,7 @@ public class Database {
     public void loadFromDataFile(String folderPath){
         readFiletoDB(folderPath + "car_category.txt", carCategoryModel.class);
         readFiletoDB(folderPath + "car.txt", carModel.class);
-        // readFiletoDB(folderPath + "rent.txt", type);
+        readFiletoDB(folderPath + "rent.txt", rentModel.class);
         readFiletoDB(folderPath + "user_category.txt", userCategoryModel.class);
         readFiletoDB(folderPath + "user.txt", userModel.class);
 
@@ -79,7 +79,7 @@ public class Database {
         
     }
 
-    private void showNumOfRecords(){
+    public void showNumOfRecords(){
         for (int i = 0; i < tables.length; i++) {
             try {
                 PreparedStatement statement = connect.prepareStatement("SELECT COUNT(*) FROM " + tables[i]);

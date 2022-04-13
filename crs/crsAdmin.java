@@ -32,6 +32,7 @@ public class crsAdmin implements CrsInterface{
                 break;
                 case 4:
                 System.out.println("You choose Show\n");
+                showNumOfRecords();
                 break;
                 case 5:
                 return;
@@ -101,5 +102,6 @@ public class crsAdmin implements CrsInterface{
 
     private void showNumOfRecords(){
         System.out.println("Number of records in each table: \n");
+        db.showNumOfRecords();
     }
 }
