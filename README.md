@@ -15,6 +15,7 @@ scp -r "Loca path" "linux1 path"
 =================How to run the program properly ==================
 
 ===================================================================
+
 Compile ->
 
 javac crs/*.java model/db/*.java model/file/*.java model/*.java
