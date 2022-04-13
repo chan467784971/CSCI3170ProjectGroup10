@@ -37,7 +37,7 @@ public class Database {
             connect.prepareStatement("CREATE TABLE carCategory (ccId INTEGER(1) NOT NULL, ccName CHAR(20) NOT NULL, PRIMARY KEY (ccId))"),
             connect.prepareStatement("CREATE TABLE user (uId CHAR(12) NOT NULL, name CHAR(25) NOT NULL, age INTEGER(2) NOT NULL, occupation CHAR(20) NOT NULL, ucId INTEGER(1) NOT NULL, PRIMARY KEY (uId))"),
             connect.prepareStatement("CREATE TABLE userCategory (ucId INTEGER(1) NOT NULL, maxNum INTEGER(1) NOT NULL, period INTEGER(2) NOT NULL, PRIMARY KEY(ucId))"),
-            connect.prepareStatement("CREATE TABLE rent (callNum CHAR(8) NOT NULL, copyNum INTEGER(1) NOT NULL, uId CHAR(12) NOT NULL, checkout DATE NOT NULL, return_date DATE, PRIMARY KEY(checkout))")
+            connect.prepareStatement("CREATE TABLE rent (callNum CHAR(8) NOT NULL, copyNum INTEGER(1) NOT NULL, uId CHAR(12) NOT NULL, checkout DATE NOT NULL, return_date DATE, PRIMARY KEY(callNum, copyNum, uId, checkout))")
         };
 
         for (int i = 0; i < statements.length; i++){

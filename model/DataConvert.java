@@ -23,9 +23,9 @@ public class DataConvert {
     public static Calendar toCalendar(String str){
         String[] splitted = str.split("-");
         Calendar calendar = Calendar.getInstance();
-        int day = Integer.parseInt(splitted[0]);
-        int month = Integer.parseInt(splitted[1])-1;
-        int year = Integer.parseInt(splitted[2]);
+        int year = Integer.parseInt(splitted[0]);
+        int month = Integer.parseInt(splitted[1]);
+        int day = Integer.parseInt(splitted[2]);
         calendar.set(year, month, day);
         return calendar;
     }
