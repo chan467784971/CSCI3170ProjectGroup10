@@ -1,6 +1,9 @@
 package model;
 
 import java.sql.*;
+import java.util.*;
+import java.io.*;
+import model.file.*;
 
 public class Database {
     private String dbAddress = "jdbc:mysql://projgw.cse.cuhk.edu.hk:2633/db10";
@@ -25,15 +28,16 @@ public class Database {
         return true;
     }
 
+    //Admin operation
     public void creatAllTable() throws SQLException {
         // preparedstatement ???????
         PreparedStatement[] statements = {
             //SQL create table statement
-            connect.prepareStatement("CREATE TABLE car (callNumber CHAR(8) NOT NULL, numOfCopies INTEGER(1) NOT NULL, carName CHAR(10) NOT NULL, company CHAR(25) NOT NULL, manuDate DATE NOT NULL, numOfRent INTEGER(2) NOT NULL, carCate INTEGER(1) NOT NULL, PRIMARY KEY (callNumber))"),
-            connect.prepareStatement("CREATE TABLE carCategory (carCate INTEGER(1) NOT NULL, carCateName CHAR(20) NOT NULL, PRIMARY KEY (carCate))"),
-            connect.prepareStatement("CREATE TABLE user (userID CHAR(12) NOT NULL, name CHAR(25) NOT NULL, age INTEGER(2) NOT NULL, occupa CHAR(20) NOT NULL, userCate INTEGER(1) NOT NULL, PRIMARY KEY (userCate))"),
-            connect.prepareStatement("CREATE TABLE userCategory (userCate INTEGER(1) NOT NULL, maxCar INTEGER(1) NOT NULL, loanP INTEGER(2) NOT NULL, PRIMARY KEY(userCate))"),
-            connect.prepareStatement("CREATE TABLE rent (callNumber CHAR(8) NOT NULL, numOfCopies INTEGER(1) NOT NULL, userID CHAR(12) NOT NULL, checkout DATE NOT NULL, return_date DATE, PRIMARY KEY(checkout))")
+            connect.prepareStatement("CREATE TABLE car (callNum CHAR(8) NOT NULL, copyNum INTEGER(1) NOT NULL, carName CHAR(10) NOT NULL, companyName CHAR(25) NOT NULL, manufacture DATE NOT NULL, timeRent INTEGER(2) NOT NULL, ccId INTEGER(1) NOT NULL, PRIMARY KEY (callNum))"),
+            connect.prepareStatement("CREATE TABLE carCategory (ccId INTEGER(1) NOT NULL, ccName CHAR(20) NOT NULL, PRIMARY KEY (ccId))"),
+            connect.prepareStatement("CREATE TABLE user (uId CHAR(12) NOT NULL, name CHAR(25) NOT NULL, age INTEGER(2) NOT NULL, occupation CHAR(20) NOT NULL, userCate INTEGER(1) NOT NULL, PRIMARY KEY (uId))"),
+            connect.prepareStatement("CREATE TABLE userCategory (ucId INTEGER(1) NOT NULL, max INTEGER(1) NOT NULL, period INTEGER(2) NOT NULL, PRIMARY KEY(ucId))"),
+            connect.prepareStatement("CREATE TABLE rent (callNum CHAR(8) NOT NULL, copyNum INTEGER(1) NOT NULL, uId CHAR(12) NOT NULL, checkout DATE NOT NULL, return_date DATE, PRIMARY KEY(checkout))")
         };
 
         for (int i = 0; i < statements.length; i++){
@@ -50,7 +54,7 @@ public class Database {
     }
 
     public void loadFromDataFile(String folderPath){
-        // readFiletoDB(folderPath + "car_category.txt", type);
+        readFiletoDB(folderPath + "car_category.txt", carCategoryModel.class);
         // readFiletoDB(folderPath + "car.txt", type);
         // readFiletoDB(folderPath + "rent.txt", type);
         // readFiletoDB(folderPath + "user_category.txt", type);
@@ -62,9 +66,12 @@ public class Database {
         
     }
 
+    //Admin operation end
+
     public void showSchema(String[] argument) {
 
     }
+    
 
     public void insertRecord(String[] argument) {
 
