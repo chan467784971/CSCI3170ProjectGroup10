@@ -49,11 +49,16 @@ public class Database {
 
     }
 
-    public void loadFromDataFile(){
+    public void loadFromDataFile(String folderPath){
+        // readFiletoDB(folderPath + "car_category.txt", type);
+        // readFiletoDB(folderPath + "car.txt", type);
+        // readFiletoDB(folderPath + "rent.txt", type);
+        // readFiletoDB(folderPath + "user_category.txt", type);
+        // readFiletoDB(folderPath + "user.txt", type);
 
     }
 
-    private void readFiletoDB(){
+    private void readFiletoDB(String folderPath, Class<?> type){
         
     }
 

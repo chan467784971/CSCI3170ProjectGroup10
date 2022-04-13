@@ -55,7 +55,7 @@ public class crsAdmin implements CrsInterface{
 
     private void createAllTable(){
         try{
-            System.out.println("Processing");
+            System.out.println("Processing...");
             db.creatAllTable();
             System.out.println("Done.Database is initialized.\n");
         }catch(SQLException e){
@@ -70,7 +70,7 @@ public class crsAdmin implements CrsInterface{
 
     private void deleteAllTable(){
         try{
-            System.out.println("Processing");
+            System.out.println("Processing...");
             db.deleteAllTable();
             System.out.println("Done! Database is removed!\n");
         }catch (SQLException e){
@@ -84,6 +84,17 @@ public class crsAdmin implements CrsInterface{
     }
 
     private void loadFromDataFile(){
+        System.out.printf("Type in the Source Data Folder Path: ");
+        Scanner in = new Scanner(System.in);
+        String folderPath = in.next();
+        try{
+            System.out.println("Processing...");
+            db.loadFromDataFile(folderPath);
+            System.out.println("Done! Data is inputted to the database!\n");
+        }catch(Exception e){
+            System.out.println("[Error] Cannot load data from file.\n");
+        }
+
 
     }
 
