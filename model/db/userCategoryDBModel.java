@@ -17,7 +17,7 @@ public class userCategoryDBModel {
 
     public void insertToDB(Connection connect){
         try {
-            PreparedStatement statement = connect.prepareStatement("INSERT INTO user (ucId, maxNum, period) VALUE(?, ?, ?)");
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO userCategory (ucId, maxNum, period) VALUE(?, ?, ?)");
             statement.setInt(1, ucId);
             statement.setInt(2, maxNum);
             statement.setInt(3, period);

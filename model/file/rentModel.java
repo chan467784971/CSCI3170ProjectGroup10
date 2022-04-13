@@ -19,7 +19,11 @@ public class rentModel implements fileModelInterface{
         this.copyNum = Integer.parseInt(seperated[1]);
         this.uId = seperated[2];
         this.checkout = DataConvert.toCalendar(seperated[3]);
-        this.return_date = DataConvert.toCalendar(seperated[4]);
+        if(!seperated[4].equals("NULL")){
+            this.return_date = DataConvert.toCalendar(seperated[4]);
+        }else{
+            this.return_date = null;
+        }
 
     }
     public void saveToDB(Connection connect){
