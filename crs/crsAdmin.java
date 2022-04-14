@@ -92,7 +92,7 @@ public class crsAdmin implements CrsInterface{
         try{
             System.out.println("Processing...");
             db.loadFromDataFile(folderPath);
-            System.out.println("Done! Data is inputted to the database!\n");
+            System.out.println("Done! Data is inputed to the database!\n");
         }catch(Exception e){
             System.out.println("[Error] Cannot load data from file.\n");
         }
