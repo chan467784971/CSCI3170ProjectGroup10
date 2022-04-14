@@ -44,6 +44,10 @@ public class crsMain implements CrsInterface {
             default :
             System.out.println("Invalid operation, choose again\n");
         }
+
+        if(input != 4){
+            c.main();
+        }
     }
     
 }
