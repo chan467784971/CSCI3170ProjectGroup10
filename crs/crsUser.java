@@ -17,15 +17,17 @@ public class crsUser implements CrsInterface{
     // main
     public void main(){
         while(true){
-            System.out.println("-----Operations for user menu-----");
-            System.out.println("What kind of operation would you like to perform?");
-            System.out.println("1. Search for Cars");
-            System.out.println("2. Show loan record of a user");
-            System.out.println("3. Return to the main menu");
+            System.out.println("-----Operations for user menu-----\n");
+            System.out.println("What kind of operation would you like to perform?\n");
+            System.out.println("1. Search for Cars\n");
+            System.out.println("2. Show loan record of a user\n");
+            System.out.println("3. Return to the main menu\n");
             System.out.print("Enter Your Choice: ");
 
             Scanner in = new Scanner(System.in);
             int input = in.nextInt();
+            
+            System.out.println();
 
             switch(input){
                 case 1:
@@ -47,14 +49,16 @@ public class crsUser implements CrsInterface{
     // searchCar
     public void searchCar() {
         while(true){
-            System.out.println("Choose the Search criterion:");
-            System.out.println("1. call number");
-            System.out.println("2. name");
-            System.out.println("3. company");;
+            System.out.println("Choose the Search criterion:\n");
+            System.out.println("1. call number\n");
+            System.out.println("2. name\n");
+            System.out.println("3. company\n");
             System.out.print("Choose the search criterion: ");
 
             Scanner in = new Scanner(System.in);
             int input = in.nextInt();
+            
+            System.out.println();
 
             switch(input){
                 case 1:
@@ -79,6 +83,8 @@ public class crsUser implements CrsInterface{
         String input = "";
         input += in.nextLine();
         in.close();
+        
+        System.out.println();
 
         db.listCarByCallNum(input);
     }
@@ -89,6 +95,8 @@ public class crsUser implements CrsInterface{
         String input = "";
         input += in.nextLine();
         in.close();
+        
+        System.out.println();
 
         db.listCarByCarName(input);
     }
@@ -99,6 +107,8 @@ public class crsUser implements CrsInterface{
         String input = "";
         input += in.nextLine();
         in.close();
+        
+        System.out.println();
 
         db.listCarByCompany(input);
     }
@@ -109,6 +119,9 @@ public class crsUser implements CrsInterface{
         String input = "";
         input += in.nextLine();
         in.close();
+        
+        System.out.println();
+        
         db.listRentRecordByUID(input);
     }
 }
