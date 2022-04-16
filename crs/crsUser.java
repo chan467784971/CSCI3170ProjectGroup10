@@ -82,7 +82,6 @@ public class crsUser implements CrsInterface{
         Scanner in = new Scanner(System.in);
         String input = "";
         input += in.nextLine();
-        in.close();
         
         System.out.println();
 
@@ -94,7 +93,6 @@ public class crsUser implements CrsInterface{
         Scanner in = new Scanner(System.in);
         String input = "";
         input += in.nextLine();
-        in.close();
         
         System.out.println();
 
@@ -106,7 +104,6 @@ public class crsUser implements CrsInterface{
         Scanner in = new Scanner(System.in);
         String input = "";
         input += in.nextLine();
-        in.close();
         
         System.out.println();
 
@@ -118,7 +115,6 @@ public class crsUser implements CrsInterface{
         Scanner in = new Scanner(System.in);
         String input = "";
         input += in.nextLine();
-        in.close();
         
         System.out.println();
         
