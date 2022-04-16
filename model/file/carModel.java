@@ -8,7 +8,7 @@ import model.*;
 
 public class carModel implements fileModelInterface {
     private String callNum;
-    private int copyNum;
+    private int copyCount;
     private String carName;
     private String company;
     private Calendar manufacture;
@@ -18,7 +18,7 @@ public class carModel implements fileModelInterface {
     public void parseFromLine(String line){
         String[] seperated = line.split("\t");
         this.callNum = seperated[0];
-        this.copyNum = Integer.parseInt(seperated[1]);
+        this.copyCount = Integer.parseInt(seperated[1]);
         this.carName = seperated[2];
         this.company = seperated[3];
         this.manufacture = DataConvert.toCalendar(seperated[4]);
@@ -26,7 +26,7 @@ public class carModel implements fileModelInterface {
         this.ccId = Integer.parseInt(seperated[6]);
     }
     public void saveToDB(Connection connect){
-        carDBModel car = new carDBModel(callNum, copyNum, carName, company, manufacture, timeRent, ccId);
+        carDBModel car = new carDBModel(callNum, copyCount, carName, company, manufacture, timeRent, ccId);
         car.insertToDB(connect);
 
     }
