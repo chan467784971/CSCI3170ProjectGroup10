@@ -100,7 +100,7 @@ public class Database {
     //User operation
     public void listCarByCallNum(String CallNum){
         try{
-            PreparedStatement statement = connect.prepareStatement("SELECT callNum, carName, ccName, company, copyCount FROM car, carCategory WHERE callNum = ? AND car.ccId = carCategory.ccId ORDER BY callNum");
+            PreparedStatement statement = connect.prepareStatement("SELECT callNum, carName, ccName, company, copyCount FROM car c, carCategory cc WHERE callNum = ? AND c.ccId = cc.ccId ORDER BY callNum");
             statement.setString(1, CallNum);
             ResultSet result = statement.executeQuery();
 
@@ -123,7 +123,7 @@ public class Database {
 
     public void listCarByCarName(String CarName){
         try{
-            PreparedStatement statement = connect.prepareStatement("SELECT callNum, carName, ccName, company, copyCount FROM car, carCategory WHERE carName = ? AND car.ccId = carCategory.ccId ORDER BY callNum");
+            PreparedStatement statement = connect.prepareStatement("SELECT callNum, carName, ccName, company, copyCount FROM car c, carCategory cc WHERE carName = ? AND c.ccId = cc.ccId ORDER BY callNum");
             statement.setString(1, CarName);
             ResultSet result = statement.executeQuery();
 
@@ -144,7 +144,7 @@ public class Database {
 
     public void listCarByCompany(String Company){
         try{
-            PreparedStatement statement = connect.prepareStatement("SELECT callNum, carName, ccName, company, copyCount FROM car, carCategory WHERE company = ? AND car.ccId = carCategory.ccId ORDER BY callNum");
+            PreparedStatement statement = connect.prepareStatement("SELECT callNum, carName, ccName, company, copyCount FROM car c, carCategory cc WHERE company = ? AND c.ccId = cc.ccId ORDER BY callNum");
             statement.setString(1, Company);
             ResultSet result = statement.executeQuery();
 
@@ -165,7 +165,7 @@ public class Database {
 
     public void listRentRecordByUID(String UID){
         try{
-            PreparedStatement statement = connect.prepareStatement("SELECT callNum, copyNum, carName, company, checkout, return_date FROM rent, car WHERE rent.uId = ? AND rent.callNum = car.callNum ORDER BY checkout DESC");
+            PreparedStatement statement = connect.prepareStatement("SELECT callNum, copyNum, carName, company, checkout, return_date FROM rent r, car c WHERE uId = ? AND r.callNum = c.callNum ORDER BY checkout DESC");
             statement.setString(1, UID);
             ResultSet result = statement.executeQuery();
 
