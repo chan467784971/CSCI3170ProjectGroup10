@@ -5,16 +5,16 @@ import java.util.Calendar;
 
 public class carDBModel {
     private String callNum;
-    private int copyNum;
+    private int copyCount;
     private String carName;
     private String company;
     private Calendar manufacture;
     private int timeRent;
     private int ccId;
 
-    public carDBModel(String callNum, int copyNum, String carName, String company, Calendar manufacture, int timeRent, int ccId){
+    public carDBModel(String callNum, int copyCount, String carName, String company, Calendar manufacture, int timeRent, int ccId){
         this.callNum = callNum;
-        this.copyNum = copyNum;
+        this.copyCount = copyCount;
         this.carName = carName;
         this.company = company;
         this.manufacture = manufacture;
@@ -24,9 +24,9 @@ public class carDBModel {
 
     public void insertToDB(Connection connect){
         try {
-            PreparedStatement statement = connect.prepareStatement("INSERT INTO car (callNum, copyNum, carName, company, manufacture, timeRent, ccId) VALUES(?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement statement = connect.prepareStatement("INSERT INTO car (callNum, copyCount, carName, company, manufacture, timeRent, ccId) VALUES(?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, callNum);
-            statement.setInt(2, copyNum);
+            statement.setInt(2, copyCount);
             statement.setString(3, carName);
             statement.setString(4, company);
             statement.setDate(5, new Date(manufacture.getTimeInMillis()));
