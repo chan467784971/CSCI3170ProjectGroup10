@@ -34,6 +34,7 @@ public class crsMain implements CrsInterface {
             break;
             case 2 :
             System.out.println("You choose User\n");
+            crsUser cUser = new crsUser();
             cUser.MainCrs(db);
             cUser.main();
             break;
