@@ -28,6 +28,13 @@ public class carModel implements fileModelInterface {
     public void saveToDB(Connection connect){
         carDBModel car = new carDBModel(callNum, copyCount, carName, company, manufacture, timeRent, ccId);
         car.insertToDB(connect);
+        for (int copynum = 1; copynum <= copyCount; copynum++) {
+            CopyDBModel copy = new CopyDBModel(callNum, copynum);
+            copy.insertToDatabase(connect);
+        }
+        ProduceDBModel produce = new ProduceDBModel(company, callNum);
+        produce.insertToDatabase(connect);
+      
 
     }
     
