@@ -62,21 +62,23 @@ public class Manager implements CrsInterface
 
     private static void carRenting()
     {
+        Scanner in = new Scanner(System.in);
          while(true){
             System.out.println("Enter the User ID:");
             System.out.print("Type in the Call Number: ");
-            Scanner in = new Scanner(System.in);
-            String input = "";
+           String input1; = "";
             input += in.nextLine();
 
             System.out.println("Enter the Call Number");
-            Scanner in = new Scanner(System.in);
-            String input = "";
+            String input2; = "";
             input += in.nextLine();
 
             System.out.print("Enter the Copy Number");
-            Scanner in = new Scanner(System.in);
-            int input = in.nextInt();
+            String inpu3; = "";
+            input = in.nextInt();
+            
+            db.(sadasdsahjdasjdnsahjdj) (input1, input2, input3);
+            
             
             System.out.println();
 //    	int flag=0;
