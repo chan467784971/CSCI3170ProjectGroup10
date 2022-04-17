@@ -102,8 +102,7 @@ public class Database {
     //User operation
     public void listCarByCallNum(String CallNum){
         try{
-            //PreparedStatement statement = connect.prepareStatement("SELECT callNum, carName, ccName, company, copyCount FROM car c, carCategory cc WHERE callNum = ? AND c.ccId = cc.ccId ORDER BY callNum");
-            PreparedStatement statement = connect.prepareStatement("SELECT callNum, carName, ccId, company, copyCount FROM car WHERE callNum = ? ORDER BY callNum");
+            PreparedStatement statement = connect.prepareStatement("SELECT callNum, carName, ccName, company, copyCount FROM car c, carCategory cc WHERE callNum = ? AND c.ccId = cc.ccId ORDER BY callNum");
             statement.setString(1, CallNum);
             ResultSet result = statement.executeQuery();
 
@@ -111,7 +110,7 @@ public class Database {
             if(result.next()){
                 String callNum = result.getString(1);
                 String carName = result.getString(2);
-                String ccName = "???";
+                String ccName = result.getString(3);
                 String company = result.getString(4);
                 int copyCount = result.getInt(5);
                 System.out.println("|" + callNum + "|" + carName + "|" + ccName + "|" + company + "|" + copyCount + "|");
