@@ -77,7 +77,7 @@ public class Manager implements CrsInterface
             String inpu3; = "";
             input = in.nextInt();
             
-            db.(sadasdsahjdasjdnsahjdj) (input1, input2, input3);
+            //db.(sadasdsahjdasjdnsahjdj) (input1, input2, input3);
             
             
             System.out.println();
