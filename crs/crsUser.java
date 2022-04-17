@@ -63,13 +63,13 @@ public class crsUser implements CrsInterface{
             switch(input){
                 case 1:
                     searchByCallNumber();
-                    return;
+                    break;
                 case 2:
                     searchByCarName();
-                    return;
+                    break;
                 case 3:
                     searchByCompany();
-                    return;
+                    break;
                 default:
                     System.out.println("Invalid operation, choose again\n");
             }
@@ -78,6 +78,19 @@ public class crsUser implements CrsInterface{
 
     
     public void searchByCallNumber() {
+        try{
+            System.out.println("Processing...");
+            db.deleteAllTable();
+            System.out.println("Done! Database is removed!\n");
+        }catch (SQLException e){
+            if (e.toString().contains("Unknown")) {
+                System.out.println("[Error] Tables do not exist.\n");
+            } else {
+                System.out.println("[Error] Failed to delete tables.\n");
+            }
+        }
+        
+        /*
         System.out.print("Type in the Call Number: ");
         Scanner in = new Scanner(System.in);
         String input = "";
@@ -90,6 +103,7 @@ public class crsUser implements CrsInterface{
         }catch(Exception e){
             System.out.println("[*ERROR]: " + e.toString());
         }
+        */
     }
 
     public void searchByCarName() {
