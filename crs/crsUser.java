@@ -85,7 +85,11 @@ public class crsUser implements CrsInterface{
         
         System.out.println();
 
-        db.listCarByCallNum(input);
+        try{
+            db.listCarByCallNum(input);
+        }catch(SQLException e){
+            System.out.println("[*ERROR]: " + e);
+        }
     }
 
     public void searchByCarName() {
@@ -96,7 +100,11 @@ public class crsUser implements CrsInterface{
         
         System.out.println();
 
-        db.listCarByCarName(input);
+        try{
+            db.listCarByCarName(input);
+        }catch(SQLException e){
+            System.out.println("[*ERROR]: " + e);
+        }
     }
 
     public void searchByCompany() {
@@ -107,7 +115,11 @@ public class crsUser implements CrsInterface{
         
         System.out.println();
 
-        db.listCarByCompany(input);
+        try{
+            db.listCarByCompany(input);
+        }catch(SQLException e){
+            System.out.println("[*ERROR]: " + e);
+        }
     }
 
     public void showRecord() {
@@ -118,6 +130,10 @@ public class crsUser implements CrsInterface{
         
         System.out.println();
         
-        db.listRentRecordByUID(input);
+        try{
+            db.listRentRecordByUID(input);
+        }catch(SQLException e){
+            System.out.println("[*ERROR]: " + e);
+        }
     }
 }
