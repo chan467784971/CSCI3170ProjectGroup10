@@ -43,7 +43,7 @@ public class crsManager implements CrsInterface
         }
     }
 
-    private static void printMenu()
+    private void printMenu()
     {
         System.out.println("-----Operations for Manager menu----\n");
         System.out.println("What kinds of operations would you like to perform?\n");
@@ -54,7 +54,7 @@ public class crsManager implements CrsInterface
         System.out.println("Enter Your Choice: \n");
     }
 
-   private static void carReturning()
+   private void carReturning()
     {
         Scanner in = new Scanner(System.in);
         while(true){
@@ -85,7 +85,7 @@ public class crsManager implements CrsInterface
          }
     }
 
-    private static void carRenting()
+    private void carRenting()
     {
         Scanner in = new Scanner(System.in);
          while(true){
@@ -113,7 +113,7 @@ public class crsManager implements CrsInterface
             System.out.println();
          }
     }
-    private static void unReturnedCar() {
+    private void unReturnedCar() {
         //Calendar startingDate, endingDate;
         String startingDate = "", endingDate = "";
         Scanner in = new Scanner(System.in);
