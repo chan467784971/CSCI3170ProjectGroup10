@@ -6,16 +6,18 @@ import model.*;
 
 public class crsUser implements CrsInterface{
     private Database db;
+    private Scanner sc;
 
     
     // Reference of DB
-    public void MainCrs(Database db){
+    public crsUser(Database db, Scanner sc){
         this.db = db;
+        this.sc = sc;
     }
     
 
     // main
-    public void main(){
+    public void startCRS(){
         while(true){
             System.out.println("-----Operations for user menu-----\n");
             System.out.println("What kind of operation would you like to perform?\n");
@@ -24,8 +26,7 @@ public class crsUser implements CrsInterface{
             System.out.println("3. Return to the main menu\n");
             System.out.print("Enter Your Choice: ");
 
-            Scanner in = new Scanner(System.in);
-            int input = in.nextInt();
+            int input = sc.nextInt();
             
             System.out.println();
 
@@ -55,8 +56,7 @@ public class crsUser implements CrsInterface{
             System.out.println("3. company\n");
             System.out.print("Choose the search criterion: ");
 
-            Scanner in = new Scanner(System.in);
-            int input = in.nextInt();
+            int input = sc.nextInt();
             
             System.out.println();
 

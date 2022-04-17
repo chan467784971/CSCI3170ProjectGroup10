@@ -6,16 +6,17 @@ import model.*;
 
 public class crsAdmin implements CrsInterface{
     private Database db;
+    private Scanner sc;
 
-    public void MainCrs(Database db){
+    public crsAdmin(Database db, Scanner sc){
         this.db = db;
+        this.sc = sc;
     }
 
-    public void main(){
+    public void startCRS(){
         while(true){
             printMenu();
-            Scanner in = new Scanner(System.in);
-            int input = in.nextInt();
+            int input = sc.nextInt();
 
             switch(input){
                 case 1:
@@ -87,8 +88,7 @@ public class crsAdmin implements CrsInterface{
 
     private void loadFromDataFile(){
         System.out.printf("Type in the Source Data Folder Path: ");
-        Scanner in = new Scanner(System.in);
-        String folderPath = in.next();
+        String folderPath = sc.next();
         try{
             System.out.println("Processing...");
             db.loadFromDataFile(folderPath);

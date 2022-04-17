@@ -23,8 +23,7 @@ public class main
         System.out.println("Welcome to Car Renting System!\n");
         System.out.println("\n");
 
-        crsMain c = new crsMain();
-        c.MainCrs(db);
-        c.main();
+        crsMain crs = new crsMain(db);
+        crs.startCRS();
     }
 }
