@@ -17,7 +17,7 @@ public class DataConvert {
         while (year.length() < 4)
             year = "0" + year;
 
-        return day + "-" + month + "-" + year;
+        return year + "-" + month + "-" + day;
     }
 
     public static Calendar toCalendar(String str){
