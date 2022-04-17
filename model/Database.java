@@ -296,7 +296,7 @@ public class Database {
         }
     }
     
-    public void listAllUnreturnedCars(String startDate, String endDate) {
+    public void listAllUnreturnedCars(Calendar startDate, Calendar endDate) {
         try {
             PreparedStatement statement = connect.prepareStatement("SELECT uId, callNum, copyNum, checkout FROM rent WHERE checkout >= ? AND checkout <= ? AND ret IS NULL ORDER BY checkout DESC");
             //statement.setString(1, startDate);
