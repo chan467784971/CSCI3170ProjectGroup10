@@ -36,7 +36,7 @@ public class crsManager implements CrsInterface
                 break;
                 case 4:
                 System.out.println("You choose return to main menu\n");
-                break;
+                return;
                 default:
                 System.out.println("Invalid operation, choose again\n");
             }
