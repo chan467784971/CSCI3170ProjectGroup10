@@ -47,7 +47,7 @@ public class crsUser implements CrsInterface{
 
 
     // searchCar
-    public void searchCar() {
+    private void searchCar() {
         while(true){
             System.out.println("Choose the Search criterion:\n");
             System.out.println("1. call number\n");
@@ -77,18 +77,9 @@ public class crsUser implements CrsInterface{
     }
 
     
-    public void searchByCallNumber() {
-        try{
-            System.out.println("Processing...");
-            db.deleteAllTable();
-            System.out.println("Done! Database is removed!\n");
-        }catch (SQLException e){
-            if (e.toString().contains("Unknown")) {
-                System.out.println("[Error] Tables do not exist.\n");
-            } else {
-                System.out.println("[Error] Failed to delete tables.\n");
-            }
-        }
+    private void searchByCallNumber() {
+        System.out.println("Number of records in each table: \n");
+        db.showNumOfRecords();
         
         /*
         System.out.print("Type in the Call Number: ");
@@ -106,7 +97,7 @@ public class crsUser implements CrsInterface{
         */
     }
 
-    public void searchByCarName() {
+    private void searchByCarName() {
         System.out.print("Type in the Search Keyword: ");
         Scanner in = new Scanner(System.in);
         String input = "";
@@ -121,7 +112,7 @@ public class crsUser implements CrsInterface{
         }
     }
 
-    public void searchByCompany() {
+    private void searchByCompany() {
         System.out.print("Type in the Search Keyword: ");
         Scanner in = new Scanner(System.in);
         String input = "";
@@ -136,7 +127,7 @@ public class crsUser implements CrsInterface{
         }
     }
 
-    public void showRecord() {
+    private void showRecord() {
         System.out.print("Enter The cuser ID: ");
         Scanner in = new Scanner(System.in);
         String input = "";
