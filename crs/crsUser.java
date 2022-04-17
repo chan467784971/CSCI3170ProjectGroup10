@@ -47,7 +47,7 @@ public class crsUser implements CrsInterface{
 
 
     // searchCar
-    public void searchCar() {
+    private void searchCar() {
         while(true){
             System.out.println("Choose the Search criterion:\n");
             System.out.println("1. call number\n");
@@ -77,18 +77,21 @@ public class crsUser implements CrsInterface{
     }
 
     
-    public void searchByCallNumber() {
+    private void searchByCallNumber() {
         System.out.print("Type in the Call Number: ");
         Scanner in = new Scanner(System.in);
         String input = "";
         input += in.nextLine();
         
         System.out.println();
-
-        db.listCarByCallNum(input);
+        try{
+            db.listCarByCallNum(input);
+        }catch(Exception e){
+            System.out.println("[ERROR]: " + e.toString());
+        }
     }
 
-    public void searchByCarName() {
+    private void searchByCarName() {
         System.out.print("Type in the Search Keyword: ");
         Scanner in = new Scanner(System.in);
         String input = "";
@@ -96,10 +99,14 @@ public class crsUser implements CrsInterface{
         
         System.out.println();
 
-        db.listCarByCarName(input);
+        try{
+            db.listCarByCarName(input);
+        }catch(Exception e){
+            System.out.println("[ERROR]: " + e.toString());
+        }
     }
 
-    public void searchByCompany() {
+    private void searchByCompany() {
         System.out.print("Type in the Search Keyword: ");
         Scanner in = new Scanner(System.in);
         String input = "";
@@ -107,10 +114,14 @@ public class crsUser implements CrsInterface{
         
         System.out.println();
 
-        db.listCarByCompany(input);
+        try{
+            db.listCarByCompany(input);
+        }catch(Exception e){
+            System.out.println("[ERROR]: " + e.toString());
+        }
     }
 
-    public void showRecord() {
+    private void showRecord() {
         System.out.print("Enter The cuser ID: ");
         Scanner in = new Scanner(System.in);
         String input = "";
@@ -118,6 +129,10 @@ public class crsUser implements CrsInterface{
         
         System.out.println();
         
-        db.listRentRecordByUID(input);
+        try{
+            db.listRentRecordByUID(input);
+        }catch(Exception e){
+            System.out.println("[ERROR]: " + e.toString());
+        }
     }
 }
