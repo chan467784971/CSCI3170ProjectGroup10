@@ -58,11 +58,11 @@ public class crsManager implements CrsInterface
     {
          while(true){
             System.out.println("Enter the User ID:");
-            String input1; = "";
+            String input1 = "";
             input += sc.nextLine();
 
             System.out.println("Enter the Call Number");
-            String input2; = "";
+            String input2 = "";
             input += sc.nextLine();
 
             System.out.print("Enter the Copy Number");
