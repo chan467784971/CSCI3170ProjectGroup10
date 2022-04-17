@@ -5,9 +5,11 @@ import model.*;
 
 public class crsMain implements CrsInterface {
     private Database db;
+    private Scanner sc;
 
-    public void MainCrs(Database db){
+    public crsMain(Database db){
         this.db = db;
+        this.sc = new Scanner(System.in);
     }
 
     private void printMenu(){
@@ -19,38 +21,39 @@ public class crsMain implements CrsInterface {
         System.out.println("4. Exit this program\n");
     }
 
-    public void main(){
-        crsMain c = new crsMain();  
-        c.printMenu();
-        Scanner in = new Scanner(System.in);
-        int input = in.nextInt();
+    public void startCRS(){
+        while(true){
+            printMenu();
+            int input = sc.nextInt();
+            System.out.println();
+            CrsInterface c = null;
 
-        switch (input){
-            case 1 :
-            System.out.println("You choose Admin\n");
-            crsAdmin cAdmin = new crsAdmin();
-            cAdmin.MainCrs(db);
-            cAdmin.main();
-            break;
-            case 2 :
-            System.out.println("You choose User\n");
-            crsUser cUser = new crsUser();
-            cUser.MainCrs(db);
-            cUser.main();
-            break;
-            case 3 :
-            System.out.println("You choose Manager\n");
-            break;
-            case 4 :
-            System.out.println("You wanna leave\n");
-            break;
-            default :
-            System.out.println("Invalid operation, choose again\n");
+            switch (input){
+                case 1 :
+                System.out.println("You choose Admin\n");
+                c = new crsAdmin(db, sc);
+                break;
+                case 2 :
+                System.out.println("You choose User\n");
+                c = new crsUser(db, sc);
+                break;
+                case 3 :
+                System.out.println("You choose Manager\n");
+                break;
+                case 4 :
+                System.out.println("You wanna leave\n");
+                return;
+                break;
+                default :
+                System.out.println("Invalid operation, choose again\n");
+            }
+
+            if (c != null){
+                c.startCRS();
+            }
         }
 
-        if(input != 4){
-            c.main();
-        }
     }
+
     
 }
