@@ -237,7 +237,7 @@ public class Database {
             }
 
             
-            statement = conn.prepareStatement("SELECT * FROM rent WHERE callNum = ? AND copyNum = ? AND return_date IS NULL");
+            statement = connect.prepareStatement("SELECT * FROM rent WHERE callNum = ? AND copyNum = ? AND return_date IS NULL");
             statement.setString(1, callnumber);
             statement.setInt(2, copynumber);
             if (statement.executeQuery().next()) {
@@ -313,7 +313,7 @@ public class Database {
                 String callnum = result.getString(2);
                 int copynum = result.getInt(3);
                 Calendar checkout = Calendar.getInstance();
-                checkout.setTimeInMillis(rs.getDate(4).getTime());
+                checkout.setTimeInMillis(result.getDate(4).getTime());
                 System.out.println("|" + userID + "|" + callnum + "|" + copynum + "|" + DateConvert.toString(checkout) + "|");
             }
             System.out.println("End of Query\n");
