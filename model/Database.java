@@ -120,6 +120,8 @@ public class Database {
             }
         }catch(SQLException e){
             System.out.println("[Error] Cannot execute the query.\n");
+        }catch(Exception e){
+            System.out.println("[#Error]: " + e.toString());
         }
     }
 
@@ -142,6 +144,8 @@ public class Database {
             System.out.println("End of Query\n");
         }catch(SQLException e){
             System.out.println("[Error] Cannot execute the query.\n");
+        }catch(Exception e){
+            System.out.println("[#Error]: " + e.toString());
         }
     }
 
@@ -163,6 +167,8 @@ public class Database {
             System.out.println("End of Query\n");
         }catch(SQLException e){
             System.out.println("[Error] Cannot execute the query.\n");
+        }catch(Exception e){
+            System.out.println("[#Error]: " + e.toString());
         }
     }
 
@@ -190,6 +196,8 @@ public class Database {
             System.out.println("End of Query\n");
         }catch(SQLException e){
             System.out.println("[Error] Cannot execute the query.\n");
+        }catch(Exception e){
+            System.out.println("[#Error]: " + e.toString());
         }
     }
     
