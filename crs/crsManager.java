@@ -54,19 +54,18 @@ public class crsManager implements CrsInterface
         System.out.println("Enter Your Choice: \n");
     }
 
-    private static void carReturning()
+   private static void carReturning()
     {
-         while(true){
+        while(true){
+            String input1, input2;
+            int input3;
             System.out.println("Enter the User ID:");
-            String input1 = "";
-            input1 += sc.nextLine();
+            input1= sc.next();
 
             System.out.println("Enter the Call Number");
-            String input2 = "";
-            input2 += sc.nextLine();
+            input2= sc.next();
 
             System.out.print("Enter the Copy Number");
-            String input3;
             input3 = sc.nextInt();
 
             System.out.println();
@@ -85,16 +84,15 @@ public class crsManager implements CrsInterface
     private static void carRenting()
     {
          while(true){
+            String input1, input2;
+            int input3;
             System.out.println("Enter the User ID:");
-            String input1 = "";
-            input1 += sc.nextLine();
+            input1= sc.next();
 
             System.out.println("Enter the Call Number");
-            String input2 = "";
-            input2 += sc.nextLine();
+            input2= sc.next();
 
             System.out.print("Enter the Copy Number");
-            int input3;
             input3 = sc.nextInt();
 
             System.out.println();
@@ -110,7 +108,7 @@ public class crsManager implements CrsInterface
          }
     }
     private static void unReturnedCar() {
-        Calender startingDate, endingDate;
+        Calendar startingDate, endingDate;
 
         System.out.printf("Type in the starting date [dd/mm/yyyy]: ");
         startingDate = DataConvert.toCalendarSlash(sc.next());
