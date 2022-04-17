@@ -217,7 +217,7 @@ public class Database {
     
     //
     
-    public void rentCar(String input1, String input2, int input3){
+    public void rentCar(String usercred, String callnumber, int copynumber){
         try {
            
             PreparedStatement statement = connect.prepareStatement("SELECT * FROM  rent WHERE callNum = ? AND copyNum = ?");
@@ -259,7 +259,7 @@ public class Database {
     }
 
 
-    public void returnCar(String input1, String input2, int input3) {
+    public void returnCar(String usercred, String callnumber, int copynumber) {
         try {
             
             PreparedStatement statement = connect.prepareStatement("SELECT * FROM rent WHERE callNum = ? AND copyNum = ?");
