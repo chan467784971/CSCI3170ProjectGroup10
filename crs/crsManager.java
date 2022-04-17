@@ -3,29 +3,23 @@ package crs;
 import java.sql.*;
 import java.util.*;
 import model.*;
-public class Manager implements CrsInterface
+public class crsManager implements CrsInterface
 {
     private Database db;
-    private String callNumber;
-    private String userId;
-    private String copyNumber;
-    //Initialization
-    public void MainCrs(Database db){
+    private Scanner sc;
+    // Reference of DB
+    public crsManager(Database db, Scanner sc){
         this.db = db;
-    }
-    Manager(String callNumber,String userId,String copyNumber)
-    {
-        this.callNumber=callNumber;
-        this.userId=userId;
-        this.copyNumber=copyNumber;
+        this.sc = sc;
     }
     
 
-    public void main(){
+    // main
+
+    public void startCRS(){
         while(true){
             printMenu();
-            Scanner in = new Scanner(System.in);
-            int input = in.nextInt();
+            int input = sc.nextInt();
 
             switch(input){
                 case 1:
@@ -60,79 +54,70 @@ public class Manager implements CrsInterface
         System.out.println("Enter Your Choice: \n");
     }
 
-    private static void carRenting()
+    private static void carReturning()
     {
-        Scanner in = new Scanner(System.in);
          while(true){
             System.out.println("Enter the User ID:");
-            System.out.print("Type in the Call Number: ");
-           String input1; = "";
-            input += in.nextLine();
+            String input1; = "";
+            input += sc.nextLine();
 
             System.out.println("Enter the Call Number");
             String input2; = "";
-            input += in.nextLine();
+            input += sc.nextLine();
 
             System.out.print("Enter the Copy Number");
-            String inpu3; = "";
-            input = in.nextInt();
+            String input3; = "";
+            input = sc.nextInt();
+
+            System.out.println();
             
-            //db.(sadasdsahjdasjdnsahjdj) (input1, input2, input3);
+            try{
+            db.returnCar(input1,input2,input3);
+        }catch(Exception e){
+            System.out.println("[ERROR]: " + e.toString());
+        }
             
             
             System.out.println();
-//    	int flag=0;
-        // connect to db and make changes
-    	
-    	
-    	
-//    	String sql="";
-    	//Connection con=new Connection();
-    	//Statement stmt=con.createStatement();
-//    	if(stmt.execute(sql)) {
-//    	String sqlTemp="";
-//    	stmt.executeQuery(sqlTemp);
-//    	flag=1;
-//    	}
-//    	else {
-//    	String sqlTemp="";
-//    	stmt.executeQuery(sqlTemp);
-        
-//    	}
-//    	if(flag==1) {
-//    		System.out.println("Yes, car is available you can rent it");
-//    	}
-//    	else {
-//    		System.out.println("Sorry!!! Car is not available");
-//    	}
-    }
-    private static void carReturning()
-    {
-        //connect to db and make changes
-    	
-    	
-    	
-    	//Connection con=new Connection();
-    	//Statement stmt=con.createStatement();
-    	//String sql="";
-//    	if(stmt.execute(sql)) {
-//    	System.out.println("Yes,You can return your car");
-//    	String sql2="";
-//    	stmt.executeUpdate(sql2);	
-//    	}
-//    else {
-//    System.out.println("Sorry for inconvenience but your request can't be process");	
-//    }
-    }
-    private static void unReturnedCar()
-    {
-        //connect to db and serach of unreturned status.
-    	
-    	//Connection con=new Connection();
-    	//Statement stmt=con.createStatement();
-//    	String displayUnreturnedCarsql = "";
-//		ResultSet rs = c.s.executeQuery(String displayUnreturnedCarsql);
-//    	System.out.println(rs);
+         }
     }
 
+    private static void carRenting()
+    {
+         while(true){
+            System.out.println("Enter the User ID:");
+            String input1 = "";
+            input += sc.nextLine();
+
+            System.out.println("Enter the Call Number");
+            String input2 = "";
+            input += sc.nextLine();
+
+            System.out.print("Enter the Copy Number");
+            String input3 = "";
+            input = sc.nextInt();
+
+            System.out.println();
+            
+            try{
+            db.returnCar(input1,input2,input3);
+        }catch(Exception e){
+            System.out.println("[ERROR]: " + e.toString());
+        }
+            
+            
+            System.out.println();
+         }
+    }
+    private static void unReturnedCar() {
+        Calender startingDate, endingDate;
+
+        System.out.printf("Type in the starting date [dd/mm/yyyy]: ");
+        startingDate = DateConvert.toCalendarSlash(sc.next());
+        System.out.printf("Type in the ending date [dd/mm/yyyy]: ");
+        endingDate = DateConvert.toCalendarSlash(sc.next());
+        System.out.println();
+
+        db.listAllUnreturnedCars(startingDate, endingDate);
+    }
 }
