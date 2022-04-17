@@ -216,7 +216,6 @@ public class Database {
     //User operation end
     
     //
-    /*
     public void rentCar(String usercred, String callnumber, int copynumber){
         try {
            
@@ -250,7 +249,8 @@ public class Database {
             statement.setString(1, usercred);
             statement.setString(2, callnumber);
             statement.setInt(3, copynumber);
-            statement.setDate(4, new Date(Calendar.getInstance().getTimeInMillis()));
+            statement.setDate(4, new java.sql.Date(System.currentTimeMillis()));
+            //statement.setDate(4, new Calendar(Calendar.getInstance().getTimeInMillis()));
             statement.execute();
             System.out.println("Car Renting performed successfully!!!\n");
         } catch (SQLException e) {
@@ -281,15 +281,14 @@ public class Database {
             // Check that this book is checked out by the user.
             statement = connect.prepareStatement("SELECT * FROM rent WHERE uId = ? AND callNum = ? AND copyNum = ? AND return_date IS NULL");
             statement.setString(1, usercred);
-            stmt.setString(2, callnumber);
-            stmt.setInt(3, copynumber);
+            statement.setString(2, callnumber);
+            statement.setInt(3, copynumber);
             if (!statement.executeQuery().next()) {
                 System.out.println("NO checkout record exists for the inputted information.\n");
                 return;
             }
 
             statement = connect.prepareStatement("UPDATE rent  SET return_date = ? WHERE uId = ? AND callNum = ? AND copyNum = ? AND return_date IS NULL");
-            statement.setDate(1, new Date(Calendar.getInstance().getTimeInMillis()));
             statement.setString(2, usercred);
             statement.setString(3, callnumber);
             statement.setInt(4, copynumber);
@@ -303,8 +302,9 @@ public class Database {
     public void listAllUnreturnedCars(Calendar startDate, Calendar endDate) {
         try {
             PreparedStatement statement = connect.prepareStatement("SELECT uId, callNum, copyNum, checkout FROM rent WHERE checkout >= ? AND checkout <= ? AND ret IS NULL ORDER BY checkout DESC");
-            statement.setDate(1, new Date(startDate.getTimeInMillis()));
-            statement.setDate(2, new Date(endDate.getTimeInMillis()));
+            //statement.setDate(4, new java.sql.Date(System.currentTimeMillis()));
+            statement.setDate(1, new java.sql.Date(startDate.getTimeInMillis()));
+            statement.setDate(2, new java.sql.Date(endDate.getTimeInMillis()));
             ResultSet result = statement.executeQuery();
 
             System.out.println("|UID|CallNum|CopyNum|Checkout|");
@@ -314,15 +314,13 @@ public class Database {
                 int copynum = result.getInt(3);
                 Calendar checkout = Calendar.getInstance();
                 checkout.setTimeInMillis(result.getDate(4).getTime());
-                System.out.println("|" + userID + "|" + callnum + "|" + copynum + "|" + DateConvert.toString(checkout) + "|");
+                System.out.println("|" + userID + "|" + callnum + "|" + copynum + "|" + DataConvert.toString(checkout) + "|");
             }
             System.out.println("End of Query\n");
         } catch (SQLException e) {
             System.out.println("The records couldnt be fetched properly.\n");
         }
     }
-    
-    */
     //
 
 
