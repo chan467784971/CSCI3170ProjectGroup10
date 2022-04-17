@@ -39,6 +39,7 @@ public class crsMain implements CrsInterface {
                 break;
                 case 3 :
                 System.out.println("You choose Manager\n");
+                c = new crsManager(db, sc);
                 break;
                 case 4 :
                 System.out.println("You wanna leave\n");
