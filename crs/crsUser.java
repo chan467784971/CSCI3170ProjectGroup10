@@ -96,7 +96,7 @@ public class crsUser implements CrsInterface{
         String input = "";
         input += in.nextLine();
         
-        System.out.println();
+        System.out.println(input);// test add input
 
         try{
             db.listCarByCallNum(input);
