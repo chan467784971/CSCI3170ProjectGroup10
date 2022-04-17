@@ -43,7 +43,6 @@ public class crsMain implements CrsInterface {
                 case 4 :
                 System.out.println("You wanna leave\n");
                 return;
-                break;
                 default :
                 System.out.println("Invalid operation, choose again\n");
             }
