@@ -274,7 +274,7 @@ public class Database {
                 return;
             }
 
-            // Check that this book is checked out by the user.
+            // Check that this car is checked out by the user.
             statement = connect.prepareStatement("SELECT * FROM rent WHERE uId = ? AND callNum = ? AND copyNum = ? AND return_date IS NULL");
             statement.setString(1, usercred);
             statement.setString(2, callnumber);
@@ -285,24 +285,24 @@ public class Database {
             }
 
             statement = connect.prepareStatement("UPDATE rent  SET return_date = ? WHERE uId = ? AND callNum = ? AND copyNum = ? AND return_date IS NULL");
+            statement.setDate(1, new java.sql.Date(System.currentTimeMillis()));
             statement.setString(2, usercred);
             statement.setString(3, callnumber);
             statement.setInt(4, copynumber);
             statement.execute();
             System.out.println("Car returning performed successfully.\n");
         } catch (SQLException e) {
-            System.out.println("The book return was Unsuccesful .\n");
+            System.out.println("The car return was Unsuccesful .\n");
         }
     }
     
     public void listAllUnreturnedCars(String startDate, String endDate) {
         try {
             PreparedStatement statement = connect.prepareStatement("SELECT uId, callNum, copyNum, checkout FROM rent WHERE checkout >= ? AND checkout <= ? AND ret IS NULL ORDER BY checkout DESC");
-            //statement.setDate(4, new java.sql.Date(System.currentTimeMillis()));
-            //statement.setDate(1, new java.sql.Date(startDate.getTimeInMillis()));
-            //statement.setDate(2, new java.sql.Date(endDate.getTimeInMillis()));
-            statement.setString(1, startDate);
-            statement.setString(2, endDate);
+            //statement.setString(1, startDate);
+            //statement.setString(2, endDate);
+            statement.setDate(1, new java.sql.Date(startDate.getTimeInMillis()));
+            statement.setDate(2, new java.sql.Date(endDate.getTimeInMillis()));
             ResultSet result = statement.executeQuery();
 
             System.out.println("|UID|CallNum|CopyNum|Checkout|");
