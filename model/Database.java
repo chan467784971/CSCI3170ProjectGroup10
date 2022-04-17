@@ -174,7 +174,7 @@ public class Database {
     public void listRentRecordByUID(String UID){
         try{
             System.out.println("Test1\n");
-            PreparedStatement statement = connect.prepareStatement("SELECT callNum, copyNum, carName, company, checkout, return_date FROM rent r, car c WHERE uId = ? AND r.callNum = c.callNum ORDER BY checkout DESC");
+            PreparedStatement statement = connect.prepareStatement("SELECT callNum, copyNum, carName, company, checkout, return_date FROM rent r, car c WHERE uId = ? AND r.callNum = c.callNum ");//ORDER BY checkout DESC
             statement.setString(1, UID);
             ResultSet result = statement.executeQuery();
 
