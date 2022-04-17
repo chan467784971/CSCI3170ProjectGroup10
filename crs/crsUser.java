@@ -7,10 +7,14 @@ import model.*;
 public class crsUser implements CrsInterface{
     private Database db;
 
+
+    // Reference of DB
     public void MainCrs(Database db){
         this.db = db;
     }
+    
 
+    // main
     public void main(){
         while(true){
             printMenu();
@@ -19,22 +23,13 @@ public class crsUser implements CrsInterface{
 
             switch(input){
                 case 1:
-                System.out.println("You choose Create\n");
-                createAllTable();
+                searchCar();
                 break;
                 case 2:
-                System.out.println("You choose Delete\n");
-                deleteAllTable();
+                showRecord();
                 break;
                 case 3:
-                System.out.println("You choose Loadfile\n");
-                loadFromDataFile();
-                break;
-                case 4:
-                System.out.println("You choose Show\n");
-                showNumOfRecords();
-                break;
-                case 5:
+                System.out.println("Return to main menu\n");
                 return;
                 default:
                 System.out.println("Invalid operation, choose again\n");
@@ -42,64 +37,117 @@ public class crsUser implements CrsInterface{
         }
     }
 
+
     public void printMenu(){
-        System.out.println("-----Main menu----\n");
-        System.out.println("What kinds of operations would you like to perform?\n");
-        System.out.println("1. Create all tables\n");
-        System.out.println("2. Delete all tables\n");
-        System.out.println("3. Load from datafile\n");
-        System.out.println("4. Show number of records in each table\n");
-        System.out.println("5. Return to main menu\n");
+        System.out.println("-----Operations for user menu-----\n");
+        System.out.println("What kind of operation would you like to perform?\n");
+        System.out.println("1. Search for Cars\n");
+        System.out.println("2. Show loan record of a user\n");
+        System.out.println("3. Return to the main menu\n");
         System.out.println("Enter Your Choice: \n");
     }
 
-    //sql operation here
 
-    private void createAllTable(){
-        try{
-            System.out.println("Processing...");
-            db.creatAllTable();
-            System.out.println("Done.Database is initialized.\n");
-        }catch(SQLException e){
-            if(e.toString().contains("exists")){
-                System.out.println("[Error] Tables already created.\n");
-            }else{
-                System.out.println("[Error] Failed to create tables.\n");
+    // searchCar
+    private void searchCar() {
+        while(true){
+            System.out.println("Choose the Search criterion:\n");
+            System.out.println("1. call number\n");
+            System.out.println("2. name\n");
+            System.out.println("3. company\n");
+            System.out.print("Choose the search criterion: ");
+
+            Scanner in = new Scanner(System.in);
+            int input = in.nextInt();
+            
+            System.out.println();
+
+            switch(input){
+                case 1:
+                    searchByCallNumber();
+                    break;
+                case 2:
+                    searchByCarName();
+                    break;
+                case 3:
+                    searchByCompany();
+                    break;
+                default:
+                    System.out.println("Invalid operation, choose again\n");
             }
         }
+    }
+    
+    
+    private void searchByCallNumber() {
+        System.out.println("Number of records in each table: \n");
+        db.showNumOfRecords();
         
-    }
-
-    private void deleteAllTable(){
-        try{
-            System.out.println("Processing...");
-            db.deleteAllTable();
-            System.out.println("Done! Database is removed!\n");
-        }catch (SQLException e){
-            if (e.toString().contains("Unknown")) {
-                System.out.println("[Error] Tables do not exist.\n");
-            } else {
-                System.out.println("[Error] Failed to delete tables.\n");
-            }
-        }
-
-    }
-
-    private void loadFromDataFile(){
-        System.out.printf("Type in the Source Data Folder Path: ");
+        /*
+        System.out.print("Type in the Call Number: ");
         Scanner in = new Scanner(System.in);
-        String folderPath = in.next();
+        String input = "";
+        input += in.nextLine();
+        
+        System.out.println(input);// test add input
         try{
-            System.out.println("Processing...");
-            db.loadFromDataFile(folderPath);
-            System.out.println("Done! Data is inputed to the database!\n");
+            db.listCarByCallNum(input);
         }catch(Exception e){
-            System.out.println("[Error] Cannot load data from file.\n");
+            System.out.println("[*ERROR]: " + e.toString());
         }
-
-
+        */
     }
 
+
+    private void searchByCarName() {
+        System.out.print("Type in the Search Keyword: ");
+        Scanner in = new Scanner(System.in);
+        String input = "";
+        input += in.nextLine();
+        
+        System.out.println();
+
+        try{
+            db.listCarByCarName(input);
+        }catch(Exception e){
+            System.out.println("[*ERROR]: " + e.toString());
+        }
+    }
+
+
+    private void searchByCompany() {
+        System.out.print("Type in the Search Keyword: ");
+        Scanner in = new Scanner(System.in);
+        String input = "";
+        input += in.nextLine();
+        
+        System.out.println();
+
+        try{
+            db.listCarByCompany(input);
+        }catch(Exception e){
+            System.out.println("[*ERROR]: " + e.toString());
+        }
+    }
+
+
+    private void showRecord() {
+        System.out.print("Enter The cuser ID: ");
+        Scanner in = new Scanner(System.in);
+        String input = "";
+        input += in.nextLine();
+        
+        System.out.println();
+        
+        try{
+            db.listRentRecordByUID(input);
+        }catch(Exception e){
+            System.out.println("[*ERROR]: " + e.toString());
+        }
+    }
+
+
+    //testing
     private void showNumOfRecords(){
         System.out.println("Number of records in each table: \n");
         db.showNumOfRecords();
