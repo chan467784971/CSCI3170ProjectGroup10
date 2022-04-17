@@ -57,7 +57,7 @@ public class crsManager implements CrsInterface
    private void carReturning()
     {
         Scanner in = new Scanner(System.in);
-        while(true){
+        
             
             
             System.out.println("Enter the User ID:");
@@ -82,13 +82,13 @@ public class crsManager implements CrsInterface
             
             
             System.out.println();
-         }
+       
     }
 
     private void carRenting()
     {
         Scanner in = new Scanner(System.in);
-         while(true){
+        
             System.out.println("Enter the User ID:");
             String input1="";
             input1 += in.nextLine();
@@ -111,7 +111,7 @@ public class crsManager implements CrsInterface
             
             
             System.out.println();
-         }
+        
     }
     private void unReturnedCar() {
         //Calendar startingDate, endingDate;
