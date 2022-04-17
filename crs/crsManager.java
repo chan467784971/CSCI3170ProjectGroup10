@@ -84,30 +84,27 @@ public class crsManager implements CrsInterface
 
     private static void carRenting()
     {
-         while(true){
+         
             System.out.println("Enter the User ID:");
-            String input1 = "";
+            String UID = "";
             input += sc.nextLine();
 
             System.out.println("Enter the Call Number");
-            String input2 = "";
+            String CallNum = "";
             input += sc.nextLine();
 
             System.out.print("Enter the Copy Number");
-            String input3 = "";
+            String CopyNum = "";
             input = sc.nextInt();
 
             System.out.println();
             
             try{
-            db.returnCar(input1,input2,input3);
-        }catch(Exception e){
-            System.out.println("[ERROR]: " + e.toString());
-        }
-            
-            
-            System.out.println();
-         }
+                db.returnCar(UID, CallNum, CopyNum);
+            }catch(Exception e){
+                System.out.println("[ERROR]: " + e.toString());
+            }
+           
     }
     private static void unReturnedCar() {
         Calender startingDate, endingDate;
