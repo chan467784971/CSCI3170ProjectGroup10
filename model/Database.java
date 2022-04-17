@@ -173,13 +173,10 @@ public class Database {
 
     public void listRentRecordByUID(String UID){
         try{
-            System.out.println("Test1\n");
             PreparedStatement statement = connect.prepareStatement("SELECT r.callNum, copyNum, carName, company, checkout, return_date FROM rent r, car c WHERE uId = ? AND r.callNum = c.callNum ORDER BY checkout DESC");
             statement.setString(1, UID);
             ResultSet result = statement.executeQuery();
 
-
-            System.out.println("Test2\n");
             System.out.println("|Call Num|CopyNum|Name|Company|Check-out|Returned?|");
             while(result.next()){
                 String callNum = result.getString(1);
@@ -187,7 +184,6 @@ public class Database {
                 String carName = result.getString(3);
                 String company = result.getString(4);
 
-                System.out.println("Test3\n");
                 /*
                 Calendar dateSource = Calendar.getInstance();
                 dateSource.setTimeInMillis(result.getDate(5).getTime());
@@ -299,12 +295,14 @@ public class Database {
         }
     }
     
-    public void listAllUnreturnedCars(Calendar startDate, Calendar endDate) {
+    public void listAllUnreturnedCars(String startDate, String endDate) {
         try {
             PreparedStatement statement = connect.prepareStatement("SELECT uId, callNum, copyNum, checkout FROM rent WHERE checkout >= ? AND checkout <= ? AND ret IS NULL ORDER BY checkout DESC");
             //statement.setDate(4, new java.sql.Date(System.currentTimeMillis()));
-            statement.setDate(1, new java.sql.Date(startDate.getTimeInMillis()));
-            statement.setDate(2, new java.sql.Date(endDate.getTimeInMillis()));
+            //statement.setDate(1, new java.sql.Date(startDate.getTimeInMillis()));
+            //statement.setDate(2, new java.sql.Date(endDate.getTimeInMillis()));
+            statement.setString(1, startDate);
+            statement.setString(2, endDate);
             ResultSet result = statement.executeQuery();
 
             System.out.println("|UID|CallNum|CopyNum|Checkout|");
