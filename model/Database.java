@@ -217,21 +217,109 @@ public class Database {
     
     //
     
-    public void showSchema(String[] argument) {
+    public void rentCar(String input1, String input2, int input3){
+        try {
+           
+            PreparedStatement statement = connect.prepareStatement("SELECT * FROM  rent WHERE callNum = ? AND copyNum = ?");
+            statement.setString(1, callnumber);
+            statement.setInt(2, copynumber);
+            if (!statement.executeQuery().next()) {
+                System.out.println("The car does not exist. Please check that the CallNum and CopyNum are correct and retry.\n");
+                return;
+            }
 
+            
+            statement = connect.prepareStatement("SELECT * FROM user WHERE uId = ?");
+            statement.setString(1, usercred);
+            if (!statement.executeQuery().next()) {
+                System.out.println("The user does not exist. Please check that the user ID is correct and retry.\n");
+                return;
+            }
+
+            
+            statement = conn.prepareStatement("SELECT * FROM rent WHERE callNum = ? AND copyNum = ? AND return_date IS NULL");
+            statement.setString(1, callnumber);
+            statement.setInt(2, copynumber);
+            if (statement.executeQuery().next()) {
+                System.out.println("The car was previously rented.\n");
+                return;
+            }
+
+        
+            statement = connect.prepareStatement("INSERT INTO rent (uId, callNum, copyNum, checkout, return_date) VALUES (?, ?, ?, ?, NULL)");
+            statement.setString(1, usercred);
+            statement.setString(2, callnumber);
+            statement.setInt(3, copynumber);
+            statement.setDate(4, new Date(Calendar.getInstance().getTimeInMillis()));
+            statement.execute();
+            System.out.println("Car Renting performed successfully!!!\n");
+        } catch (SQLException e) {
+            System.out.println("Car renting was Unsuccesful.\n");
+        }
+    }
+
+
+    public void returnCar(String input1, String input2, int input3) {
+        try {
+            
+            PreparedStatement statement = connect.prepareStatement("SELECT * FROM rent WHERE callNum = ? AND copyNum = ?");
+            statement.setString(1, callnumber);
+            statement.setInt(2, copynumber);
+            if (!statement.executeQuery().next()) {
+                System.out.println(" The car does not exist. Please check that the CallNumber and CopyNumber are correctly inputted and try again.\n");
+                return;
+            }
+
+        
+            statement = connect.prepareStatement("SELECT * FROM user WHERE uId = ?");
+            statement.setString(1, usercred);
+            if (!statement.executeQuery().next()) {
+                System.out.println("The user does not exist. Please check that the user ID is correctly inputted and try again.\n");
+                return;
+            }
+
+            // Check that this book is checked out by the user.
+            statement = connect.prepareStatement("SELECT * FROM rent WHERE uId = ? AND callNum = ? AND copyNum = ? AND return_date IS NULL");
+            statement.setString(1, usercred);
+            stmt.setString(2, callnumber);
+            stmt.setInt(3, copynumber);
+            if (!statement.executeQuery().next()) {
+                System.out.println("NO checkout record exists for the inputted information.\n");
+                return;
+            }
+
+            statement = connect.prepareStatement("UPDATE rent  SET return_date = ? WHERE uId = ? AND callNum = ? AND copyNum = ? AND return_date IS NULL");
+            statement.setDate(1, new Date(Calendar.getInstance().getTimeInMillis()));
+            statement.setString(2, usercred);
+            statement.setString(3, callnumber);
+            statement.setInt(4, copynumber);
+            statement.execute();
+            System.out.println("Car returning performed successfully.\n");
+        } catch (SQLException e) {
+            System.out.println("The book return was Unsuccesful .\n");
+        }
     }
     
+    public void listAllUnreturnedCars(Calendar startDate, Calendar endDate) {
+        try {
+            PreparedStatement statement = connect.prepareStatement("SELECT uId, callNum, copyNum, checkout FROM rent WHERE checkout >= ? AND checkout <= ? AND ret IS NULL ORDER BY checkout DESC");
+            statement.setDate(1, new Date(startDate.getTimeInMillis()));
+            statement.setDate(2, new Date(endDate.getTimeInMillis()));
+            ResultSet result = statement.executeQuery();
 
-    public void insertRecord(String[] argument) {
-
-    }
-
-    public void updateRecord(String[] argument) {
-
-    }
-
-    public void deleteRecord(String[] argument) {
-
+            System.out.println("|UID|CallNum|CopyNum|Checkout|");
+            while (result.next()) {
+                String userID = result.getString(1);
+                String callnum = result.getString(2);
+                int copynum = result.getInt(3);
+                Calendar checkout = Calendar.getInstance();
+                checkout.setTimeInMillis(rs.getDate(4).getTime());
+                System.out.println("|" + userID + "|" + callnum + "|" + copynum + "|" + DateConvert.toString(checkout) + "|");
+            }
+            System.out.println("End of Query\n");
+        } catch (SQLException e) {
+            System.out.println("The records couldnt be fetched properly.\n");
+        }
     }
 
     //
