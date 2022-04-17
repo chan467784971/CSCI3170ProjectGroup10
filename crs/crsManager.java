@@ -56,17 +56,21 @@ public class crsManager implements CrsInterface
 
    private static void carReturning()
     {
+        Scanner in = new Scanner(System.in);
         while(true){
-            String input1, input2;
-            int input3;
+            
+            
             System.out.println("Enter the User ID:");
-            input1= sc.next();
+            String input1="";
+            input1 += in.nextLine();
 
-            System.out.println("Enter the Call Number");
-            input2= sc.next();
+            System.out.print("Type in the Call Number: ");
+            String input2 = "";
+            input2 += in.nextLine();
 
             System.out.print("Enter the Copy Number");
-            input3 = sc.nextInt();
+            int input3;
+            input3 = in.nextInt();
 
             System.out.println();
             
@@ -83,17 +87,19 @@ public class crsManager implements CrsInterface
 
     private static void carRenting()
     {
+        Scanner in = new Scanner(System.in);
          while(true){
-            String input1, input2;
-            int input3;
             System.out.println("Enter the User ID:");
-            input1= sc.next();
+            String input1="";
+            input1 += in.nextLine();
 
-            System.out.println("Enter the Call Number");
-            input2= sc.next();
+            System.out.print("Type in the Call Number: ");
+            String input2 = "";
+            input2 += in.nextLine();
 
             System.out.print("Enter the Copy Number");
-            input3 = sc.nextInt();
+            int input3;
+            input3 = in.nextInt();
 
             System.out.println();
             
@@ -108,12 +114,16 @@ public class crsManager implements CrsInterface
          }
     }
     private static void unReturnedCar() {
-        Calendar startingDate, endingDate;
+        //Calendar startingDate, endingDate;
+        String startingDate ='', endingDate='';
+        Scanner in = new Scanner(System.in);
 
         System.out.printf("Type in the starting date [dd/mm/yyyy]: ");
-        startingDate = DataConvert.toCalendarSlash(sc.next());
+        startingDate+=in.nextLine();
+        //startingDate = DataConvert.toString(startingDate);
         System.out.printf("Type in the ending date [dd/mm/yyyy]: ");
-        endingDate = DataConvert.toCalendarSlash(sc.next());
+        endingDate+=in.nextLine();
+        //endingDate = DataConvert.toCalendarSlash(sc.next());
         System.out.println();
 
         db.listAllUnreturnedCars(startingDate, endingDate);
