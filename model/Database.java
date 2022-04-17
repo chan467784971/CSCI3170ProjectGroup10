@@ -173,24 +173,37 @@ public class Database {
 
     public void listRentRecordByUID(String UID){
         try{
+            System.out.println("Test1\n");
             PreparedStatement statement = connect.prepareStatement("SELECT callNum, copyNum, carName, company, checkout, return_date FROM rent r, car c WHERE uId = ? AND r.callNum = c.callNum ORDER BY checkout DESC");
             statement.setString(1, UID);
             ResultSet result = statement.executeQuery();
 
+
+            System.out.println("Test2\n");
             System.out.println("|Call Num|CopyNum|Name|Company|Check-out|Returned?|");
             while(result.next()){
                 String callNum = result.getString(1);
                 int copyNum = result.getInt(2);
                 String carName = result.getString(3);
                 String company = result.getString(4);
-                String checkout = String.format("%1$tY-%1$tm-%1$td", result.getDate(5));
-                String return_flag;
-                if(result.getDate(6) != null){
-                    return_flag = "Yes";
-                }else{
-                    return_flag = "No";
-                }
-                System.out.println("|" + callNum + "|" + copyNum + "|" + carName + "|" + company + "|" + checkout + "|" + return_flag + "|");
+
+                System.out.println("Test3\n");
+                Calendar dateSource = Calendar.getInstance();
+                dateSource.setTimeInMillis(result.getDate(5).getTime());
+                String checkout = DataConvert.toString(dateSource)
+
+
+
+
+                //String checkout = String.format("%1$tY-%1$tm-%1$td", result.getDate(5));
+                //String return_flag;
+                //if(result.getDate(6) != null){
+                //    return_flag = "Yes";
+                //}else{
+                //    return_flag = "No";
+                //}
+                //System.out.println("|" + callNum + "|" + copyNum + "|" + carName + "|" + company + "|" + checkout + "|" + return_flag + "|");
+                System.out.println("|" + callNum + "|" + copyNum + "|" + carName + "|" + company + "|" + checkout + "|");
             }
             System.out.println("End of Query\n");
         }catch(SQLException e){
