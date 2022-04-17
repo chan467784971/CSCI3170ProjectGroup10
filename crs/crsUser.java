@@ -26,7 +26,8 @@ public class crsUser implements CrsInterface{
                 searchCar();
                 break;
                 case 2:
-                showRecord();
+                showNumOfRecords();
+                //showRecord();
                 break;
                 case 3:
                 System.out.println("Return to main menu\n");
