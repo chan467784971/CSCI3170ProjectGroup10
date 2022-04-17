@@ -114,16 +114,17 @@ public class crsManager implements CrsInterface
         
     }
     private void unReturnedCar() {
-        //Calendar startingDate, endingDate;
-        String startingDate = "", endingDate = "";
-        Scanner in = new Scanner(System.in);
+        Calendar startingDate, endingDate;
+        //String startingDate = "", endingDate = "";
+        //Scanner in = new Scanner(System.in);
 
         System.out.printf("Type in the starting date [dd/mm/yyyy]: ");
-        startingDate+=in.nextLine();
-        //startingDate = DataConvert.toString(startingDate);
+        //startingDate+=in.nextLine();
+        startingDate = DataConvert.toString(sc.next());
         System.out.printf("Type in the ending date [dd/mm/yyyy]: ");
-        endingDate+=in.nextLine();
+        //endingDate+=in.nextLine();
         //endingDate = DataConvert.toCalendarSlash(sc.next());
+        endtingDate = DataConvert.toString(sc.next());
         System.out.println();
 
         db.listAllUnreturnedCars(startingDate, endingDate);
