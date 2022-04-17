@@ -174,7 +174,7 @@ public class Database {
     public void listRentRecordByUID(String UID){
         try{
             System.out.println("Test1\n");
-            PreparedStatement statement = connect.prepareStatement("SELECT callNum, copyNum, carName, company, checkout, return_date FROM rent r, car c WHERE uId = ? AND r.callNum = c.callNum ");//ORDER BY checkout DESC
+            PreparedStatement statement = connect.prepareStatement("SELECT callNum, copyNum, carName, company FROM rent r, car c WHERE uId = ? AND r.callNum = c.callNum ");//ORDER BY checkout DESC
             statement.setString(1, UID);
             ResultSet result = statement.executeQuery();
 
@@ -216,7 +216,7 @@ public class Database {
     //User operation end
     
     //
-    
+    /*
     public void rentCar(String usercred, String callnumber, int copynumber){
         try {
            
@@ -321,7 +321,8 @@ public class Database {
             System.out.println("The records couldnt be fetched properly.\n");
         }
     }
-
+    
+    */
     //
 
 
