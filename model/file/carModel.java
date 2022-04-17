@@ -2,6 +2,9 @@ package model.file;
 
 import java.sql.Connection;
 import model.db.carDBModel;
+import model.db.copyDBModel;
+import model.db.produceDBModel;
+
 import java.util.Calendar;
 
 import model.*;
@@ -29,10 +32,10 @@ public class carModel implements fileModelInterface {
         carDBModel car = new carDBModel(callNum, copyCount, carName, company, manufacture, timeRent, ccId);
         car.insertToDB(connect);
         for (int copynum = 1; copynum <= copyCount; copynum++) {
-            CopyDBModel copy = new CopyDBModel(callNum, copynum);
+            copyDBModel copy = new copyDBModel(callNum, copynum);
             copy.insertToDatabase(connect);
         }
-        ProduceDBModel produce = new ProduceDBModel(company, callNum);
+        produceDBModel produce  = new produceDBModel(company, callNum);
         produce.insertToDatabase(connect);
       
 
