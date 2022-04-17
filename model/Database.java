@@ -190,7 +190,7 @@ public class Database {
                 System.out.println("Test3\n");
                 Calendar dateSource = Calendar.getInstance();
                 dateSource.setTimeInMillis(result.getDate(5).getTime());
-                String checkout = DataConvert.toString(dateSource)
+                String checkout = DataConvert.toString(dateSource);
 
 
 
