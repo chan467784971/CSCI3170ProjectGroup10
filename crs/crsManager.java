@@ -59,15 +59,15 @@ public class crsManager implements CrsInterface
          while(true){
             System.out.println("Enter the User ID:");
             String input1 = "";
-            input += sc.nextLine();
+            input1 += sc.nextLine();
 
             System.out.println("Enter the Call Number");
             String input2 = "";
-            input += sc.nextLine();
+            input2 += sc.nextLine();
 
             System.out.print("Enter the Copy Number");
             String input3;
-            input = sc.nextInt();
+            input3 = sc.nextInt();
 
             System.out.println();
             
@@ -87,15 +87,15 @@ public class crsManager implements CrsInterface
          while(true){
             System.out.println("Enter the User ID:");
             String input1 = "";
-            input += sc.nextLine();
+            input1 += sc.nextLine();
 
             System.out.println("Enter the Call Number");
             String input2 = "";
-            input += sc.nextLine();
+            input2 += sc.nextLine();
 
             System.out.print("Enter the Copy Number");
             int input3;
-            input = sc.nextInt();
+            input3 = sc.nextInt();
 
             System.out.println();
             
@@ -113,9 +113,9 @@ public class crsManager implements CrsInterface
         Calender startingDate, endingDate;
 
         System.out.printf("Type in the starting date [dd/mm/yyyy]: ");
-        startingDate = DateConvert.toCalendarSlash(sc.next());
+        startingDate = DataConvert.toCalendarSlash(sc.next());
         System.out.printf("Type in the ending date [dd/mm/yyyy]: ");
-        endingDate = DateConvert.toCalendarSlash(sc.next());
+        endingDate = DataConvert.toCalendarSlash(sc.next());
         System.out.println();
 
         db.listAllUnreturnedCars(startingDate, endingDate);
