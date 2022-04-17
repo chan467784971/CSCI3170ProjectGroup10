@@ -174,8 +174,7 @@ public class Database {
     public void listRentRecordByUID(String UID){
         try{
             System.out.println("Test1\n");
-            PreparedStatement statement = connect.prepareStatement("SELECT callNum, carName, ccName, company, copyCount FROM car c, carCategory cc WHERE carName = ? AND c.ccId = cc.ccId ORDER BY callNum");
-            //PreparedStatement statement = connect.prepareStatement("SELECT callNum, copyNum, carName, company FROM rent r, car c WHERE uId = ? AND r.callNum = c.callNum ");//ORDER BY checkout DESC
+            PreparedStatement statement = connect.prepareStatement("SELECT r.callNum, copyNum, carName, company, checkout, return_date FROM rent r, car c WHERE uId = ? AND r.callNum = c.callNum ORDER BY checkout DESC");
             statement.setString(1, UID);
             ResultSet result = statement.executeQuery();
 
@@ -189,22 +188,22 @@ public class Database {
                 String company = result.getString(4);
 
                 System.out.println("Test3\n");
+                /*
                 Calendar dateSource = Calendar.getInstance();
                 dateSource.setTimeInMillis(result.getDate(5).getTime());
-                String checkout = DataConvert.toString(dateSource);
+                String checkout = DataConvert.toString(dateSource)
+                */
 
 
 
-
-                //String checkout = String.format("%1$tY-%1$tm-%1$td", result.getDate(5));
-                //String return_flag;
-                //if(result.getDate(6) != null){
-                //    return_flag = "Yes";
-                //}else{
-                //    return_flag = "No";
-                //}
-                //System.out.println("|" + callNum + "|" + copyNum + "|" + carName + "|" + company + "|" + checkout + "|" + return_flag + "|");
-                System.out.println("|" + callNum + "|" + copyNum + "|" + carName + "|" + company + "|" + checkout + "|");
+                String checkout = String.format("%1$tY-%1$tm-%1$td", result.getDate(5));
+                String return_flag;
+                if(result.getDate(6) != null){
+                    return_flag = "Yes";
+                }else{
+                    return_flag = "No";
+                }
+                System.out.println("|" + callNum + "|" + copyNum + "|" + carName + "|" + company + "|" + checkout + "|" + return_flag + "|");
             }
             System.out.println("End of Query\n");
         }catch(SQLException e){
