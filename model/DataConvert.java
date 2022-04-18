@@ -36,7 +36,7 @@ public class DataConvert {
         int day = Integer.parseInt(splitted[0]);
         int month = Integer.parseInt(splitted[1]);
         int year = Integer.parseInt(splitted[2]);
-        calendar.set(day, month, year);
+        calendar.set(year, month, day);
         return calendar;
     }
     

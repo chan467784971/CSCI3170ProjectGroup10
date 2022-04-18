@@ -13,12 +13,12 @@ public class crsMain implements CrsInterface {
     }
 
     private void printMenu(){
-        System.out.println("-----Main menu----\n");
-        System.out.println("What kinds of operations would you like to perform?\n");
-        System.out.println("1. Operations for Administrator\n");
-        System.out.println("2. Operations for User\n");
-        System.out.println("3. Operations for Manager\n");
-        System.out.println("4. Exit this program\n");
+        System.out.println("-----Main menu----");
+        System.out.println("What kinds of operations would you like to perform?");
+        System.out.println("1. Operations for Administrator");
+        System.out.println("2. Operations for User");
+        System.out.println("3. Operations for Manager");
+        System.out.println("4. Exit this program");
     }
 
     public void startCRS(){
@@ -30,22 +30,22 @@ public class crsMain implements CrsInterface {
 
             switch (input){
                 case 1 :
-                System.out.println("You choose Admin\n");
+                System.out.println("You choose Admin");
                 c = new crsAdmin(db, sc);
                 break;
                 case 2 :
-                System.out.println("You choose User\n");
+                System.out.println("You choose User");
                 c = new crsUser(db, sc);
                 break;
                 case 3 :
-                System.out.println("You choose Manager\n");
+                System.out.println("You choose Manager");
                 c = new crsManager(db, sc);
                 break;
                 case 4 :
-                System.out.println("You wanna leave\n");
+                System.out.println("You wanna leave");
                 return;
                 default :
-                System.out.println("Invalid operation, choose again\n");
+                System.out.println("Invalid operation, choose again");
             }
 
             if (c != null){

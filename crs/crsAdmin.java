@@ -20,19 +20,19 @@ public class crsAdmin implements CrsInterface{
 
             switch(input){
                 case 1:
-                System.out.println("You choose Create\n");
+                System.out.println("You choose Create All Table");
                 createAllTable();
                 break;
                 case 2:
-                System.out.println("You choose Delete\n");
+                System.out.println("You choose Delete All Table");
                 deleteAllTable();
                 break;
                 case 3:
-                System.out.println("You choose Loadfile\n");
+                System.out.println("You choose Load File To Database");
                 loadFromDataFile();
                 break;
                 case 4:
-                System.out.println("You choose Show\n");
+                System.out.println("You choose Show No. of Record");
                 showNumOfRecords();
                 break;
                 case 5:
@@ -44,14 +44,14 @@ public class crsAdmin implements CrsInterface{
     }
 
     public void printMenu(){
-        System.out.println("-----Main menu----\n");
-        System.out.println("What kinds of operations would you like to perform?\n");
-        System.out.println("1. Create all tables\n");
-        System.out.println("2. Delete all tables\n");
-        System.out.println("3. Load from datafile\n");
-        System.out.println("4. Show number of records in each table\n");
-        System.out.println("5. Return to main menu\n");
-        System.out.println("Enter Your Choice: \n");
+        System.out.println("-----Main menu----");
+        System.out.println("What kinds of operations would you like to perform?");
+        System.out.println("1. Create all tables");
+        System.out.println("2. Delete all tables");
+        System.out.println("3. Load from datafile");
+        System.out.println("4. Show number of records in each table");
+        System.out.println("5. Return to main menu");
+        System.out.print("Enter Your Choice: ");
     }
 
     //sql operation here
@@ -60,12 +60,12 @@ public class crsAdmin implements CrsInterface{
         try{
             System.out.println("Processing...");
             db.creatAllTable();
-            System.out.println("Done.Database is initialized.\n");
+            System.out.println("Done.Database is initialized.");
         }catch(SQLException e){
             if(e.toString().contains("exists")){
-                System.out.println("[Error] Tables already created.\n");
+                System.out.println("[Error] Tables already created.");
             }else{
-                System.out.println("[Error] Failed to create tables.\n");
+                System.out.println("[Error] Failed to create tables.");
             }
         }
         

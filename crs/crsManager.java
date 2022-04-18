@@ -23,35 +23,35 @@ public class crsManager implements CrsInterface
 
             switch(input){
                 case 1:
-                System.out.println("You choose Car Renting\n");
+                System.out.println("You choose Car Renting");
                 carRenting();
                 break;
                 case 2:
-                System.out.println("You choose car Returning \n");
+                System.out.println("You choose car Returning");
                 carReturning();
                 break;
                 case 3:
-                System.out.println("You choose List all un-returned car\n");
+                System.out.println("You choose List all un-returned car");
                 unReturnedCar();
                 break;
                 case 4:
-                System.out.println("You choose return to main menu\n");
+                System.out.println("You choose return to main menu");
                 return;
                 default:
-                System.out.println("Invalid operation, choose again\n");
+                System.out.println("Invalid operation, choose again");
             }
         }
     }
 
     private void printMenu()
     {
-        System.out.println("-----Operations for Manager menu----\n");
-        System.out.println("What kinds of operations would you like to perform?\n");
-        System.out.println("1. Car Renting\n");
-        System.out.println("2. Car Returning\n");
-        System.out.println("3. List all un-returned car copies which are checked-out within a period\n");
-        System.out.println("4. Return to main menu\n");
-        System.out.println("Enter Your Choice: \n");
+        System.out.println("-----Operations for Manager menu----");
+        System.out.println("What kinds of operations would you like to perform?");
+        System.out.println("1. Car Renting");
+        System.out.println("2. Car Returning");
+        System.out.println("3. List all un-returned car copies which are checked-out within a period");
+        System.out.println("4. Return to main menu");
+        System.out.println("Enter Your Choice: ");
     }
 
    private void carReturning()
@@ -60,7 +60,7 @@ public class crsManager implements CrsInterface
         
             
             
-            System.out.println("Enter the User ID:");
+            System.out.print("Enter the User ID:");
             String input1="";
             input1 += in.nextLine();
 
@@ -68,7 +68,7 @@ public class crsManager implements CrsInterface
             String input2 = "";
             input2 += in.nextLine();
 
-            System.out.print("Enter the Copy Number");
+            System.out.print("Enter the Copy Number:");
             int input3;
             input3 = in.nextInt();
 
@@ -89,7 +89,7 @@ public class crsManager implements CrsInterface
     {
         Scanner in = new Scanner(System.in);
         
-            System.out.println("Enter the User ID:");
+            System.out.print("Enter the User ID:");
             String input1="";
             input1 += in.nextLine();
 
