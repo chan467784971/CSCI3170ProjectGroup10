@@ -60,7 +60,7 @@ public class crsManager implements CrsInterface
         
             
             
-            System.out.println("Enter the User ID:");
+            System.out.print("Enter the User ID:");
             String input1="";
             input1 += in.nextLine();
 
@@ -68,7 +68,7 @@ public class crsManager implements CrsInterface
             String input2 = "";
             input2 += in.nextLine();
 
-            System.out.print("Enter the Copy Number");
+            System.out.print("Enter the Copy Number:");
             int input3;
             input3 = in.nextInt();
 
@@ -89,7 +89,7 @@ public class crsManager implements CrsInterface
     {
         Scanner in = new Scanner(System.in);
         
-            System.out.println("Enter the User ID:");
+            System.out.print("Enter the User ID:");
             String input1="";
             input1 += in.nextLine();
 
