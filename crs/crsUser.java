@@ -19,11 +19,11 @@ public class crsUser implements CrsInterface{
     // main
     public void startCRS(){
         while(true){
-            System.out.println("-----Operations for user menu-----\n");
-            System.out.println("What kind of operation would you like to perform?\n");
-            System.out.println("1. Search for Cars\n");
-            System.out.println("2. Show loan record of a user\n");
-            System.out.println("3. Return to the main menu\n");
+            System.out.println("-----Operations for user menu-----");
+            System.out.println("What kind of operation would you like to perform?");
+            System.out.println("1. Search for Cars");
+            System.out.println("2. Show loan record of a user");
+            System.out.println("3. Return to the main menu");
             System.out.print("Enter Your Choice: ");
 
             int input = sc.nextInt();
@@ -50,10 +50,10 @@ public class crsUser implements CrsInterface{
     // searchCar
     private void searchCar() {
         while(true){
-            System.out.println("Choose the Search criterion:\n");
-            System.out.println("1. call number\n");
-            System.out.println("2. name\n");
-            System.out.println("3. company\n");
+            System.out.println("Choose the Search criterion:");
+            System.out.println("1. call number");
+            System.out.println("2. name");
+            System.out.println("3. company");
             System.out.print("Choose the search criterion: ");
 
             int input = sc.nextInt();
@@ -122,7 +122,7 @@ public class crsUser implements CrsInterface{
     }
 
     private void showRecord() {
-        System.out.print("Enter The cuser ID: ");
+        System.out.print("Enter the user ID: ");
         Scanner in = new Scanner(System.in);
         String input = "";
         input += in.nextLine();

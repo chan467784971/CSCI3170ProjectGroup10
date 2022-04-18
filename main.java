@@ -21,8 +21,6 @@ public class main
 
         //start system
         System.out.println("Welcome to Car Renting System!\n");
-        System.out.println("\n");
-
         crsMain crs = new crsMain(db);
         crs.startCRS();
     }
