@@ -14,7 +14,7 @@
 
 `scp -r "Loca path" "linux1 path"`
 
-How to run the program properly 
+How to run the program
 -------------------------------------------------------------------
 
 * Compile ->
@@ -35,13 +35,10 @@ How to run the program properly
 > remove them and use javac in linux to complie it again
 
 
-* if any java file need to compile with other file together, use
-
-`javac -cp "path to target file" *.java`
-
-
 * If you find any error in dataset, try following function under Admin operation to reset the Database:
 
 `deleteAll -> CreateAll -> LoadAll`
 
-* References https://github.com/YuChaoGithub
+-------------------------------------------------------------------
+
+* References: all the material from CSCI3170's Lecture, Tutorial, and https://github.com/YuChaoGithub/CSCI3170-Project
